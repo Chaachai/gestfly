@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">GestFly</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">Contacts permissions are needed for providing email completions.</string>
+    <string name="no_text"> </string>
+    <string name="registration_message">You are not registered yet. Use the registration button to complete your registration.</string>
+    <string name="registration_failed">Your email or password is already in use</string>
+    <string-array name="autocomplete">
+        <item>johnpaul@yahoo.com</item>
+        <item>marykate@yahoo.com</item>
+        <item>kelvinjames@yahoo.com</item>
+        <item>henrysweart@gmail.com</item>
+        <item>gracepowell@yahoo.com</item>
+    </string-array>
+    <string name="title_activity_side_menu">SideMenuActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_projet_list">ProjetListActivity</string>
+</resources>
