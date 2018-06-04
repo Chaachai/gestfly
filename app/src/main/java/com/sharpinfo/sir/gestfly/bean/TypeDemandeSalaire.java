@@ -3,17 +3,17 @@ package com.sharpinfo.sir.gestfly.bean;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Job implements Serializable {
+public class TypeDemandeSalaire implements Serializable {
     private static final Long serialVersionUID = 1L;
     private Long id;
-    private String nom;
+    private String type;
 
-    public Job() {
+    public TypeDemandeSalaire() {
     }
 
-    public Job(Long id, String nom) {
+    public TypeDemandeSalaire(Long id, String type) {
         this.id = id;
-        this.nom = nom;
+        this.type = type;
     }
 
     public Long getId() {
@@ -24,20 +24,20 @@ public class Job implements Serializable {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getType() {
+        return type;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Job job = (Job) o;
-        return Objects.equals(id, job.id);
+        TypeDemandeSalaire that = (TypeDemandeSalaire) o;
+        return Objects.equals(id, that.id);
     }
 
     @Override
@@ -48,9 +48,9 @@ public class Job implements Serializable {
 
     @Override
     public String toString() {
-        return "Job{" +
+        return "TypeDemandeSalaire{" +
                 "id=" + id +
-                ", etat='" + nom + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
 }

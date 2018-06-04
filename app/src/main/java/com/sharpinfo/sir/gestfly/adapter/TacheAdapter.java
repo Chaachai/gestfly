@@ -8,38 +8,34 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.sharpinfo.sir.gestfly.R;
-import com.sharpinfo.sir.gestfly.action.projet.ProjetListActivity;
+import com.sharpinfo.sir.gestfly.action.tache.TacheListActivity;
 import com.sharpinfo.sir.gestfly.bean.Projet;
+import com.sharpinfo.sir.gestfly.bean.Tache;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-public class ProjetAdapter extends RecyclerView.Adapter<ProjetAdapter.ViewHolder> {
-    private List<Projet> mProjets;
+public class TacheAdapter extends RecyclerView.Adapter<TacheAdapter.ViewHolder> {
+    private List<Tache> mTaches;
 
-    public ProjetAdapter(List<Projet> projets) {
-        mProjets = projets;
+    public TacheAdapter(List<Tache> taches) {
+        mTaches = taches;
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nom;
-        public ConstraintLayout projetitem;
+        public ConstraintLayout tacheItem;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            projetitem = itemView.findViewById(R.id.projet_item);
-            nom = itemView.findViewById(R.id.projet_item_nom);
-
+            tacheItem = itemView.findViewById(R.id.tache_item);
+            nom = itemView.findViewById(R.id.tache_item_nom);
         }
     }
 
@@ -49,29 +45,29 @@ public class ProjetAdapter extends RecyclerView.Adapter<ProjetAdapter.ViewHolder
         final Context context = parent.getContext();
         final LayoutInflater inflater = LayoutInflater.from(context);
 
-        final View projetView = inflater.inflate(R.layout.item_projet_list, parent, false);
+        final View tacheView = inflater.inflate(R.layout.item_tache_list, parent, false);
 
-        final ProjetAdapter.ViewHolder viewHolder = new ProjetAdapter.ViewHolder(projetView);
+        final TacheAdapter.ViewHolder viewHolder = new TacheAdapter.ViewHolder(tacheView);
 
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        Projet projet = mProjets.get(position);
+        Tache tache = mTaches.get(position);
 
         TextView nomTextView = viewHolder.nom;
-        nomTextView.setText(projet.getNom());
+        nomTextView.setText(tache.getNom());
     }
 
-    public void setfilter(List<Projet> filteredprojets) {
-        mProjets = new ArrayList<>();
-        mProjets.addAll(filteredprojets);
+    public void setfilter(List<Tache> filteredTaches) {
+        mTaches = new ArrayList<>();
+        mTaches.addAll(filteredTaches);
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return mProjets.size();
+        return mTaches.size();
     }
 }

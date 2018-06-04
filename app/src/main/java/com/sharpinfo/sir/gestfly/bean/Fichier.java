@@ -97,7 +97,7 @@ public class Fichier implements Serializable {
     public String toString() {
         return "Fichier{" +
                 "id=" + id +
-                ", nom='" + nom + '\'' +
+                ", etat='" + nom + '\'' +
                 ", type='" + type + '\'' +
                 ", date=" + date +
                 ", administrative=" + administrative +

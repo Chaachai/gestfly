@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
+    android:background="@drawable/gray_background"
     tools:layout_editor_absoluteY="81dp">
 
     <LinearLayout
@@ -21,12 +21,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.v7.widget.CardView
-            android:id="@+id/societeCardView"
+            android:id="@+id/projetCardView"
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:foreground="?android:attr/selectableItemBackground"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,13 +40,15 @@
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundred"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/ic_widgets_black_24dp" />
+                    app:srcCompat="@drawable/ic_work_black_24dp"
+                    android:contentDescription="@string/todo"
+                    tools:ignore="VectorDrawableCompat" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Mes Projets"
+                    android:text="@string/mes_projets"
                     android:textStyle="bold" />
 
                 <View
@@ -59,19 +62,20 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Consulter mes projets"
+                    android:text="@string/consulter_mes_projets"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/projetCardView"
+            android:id="@+id/tacheCardView"
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:foreground="?android:attr/selectableItemBackground"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -84,13 +88,15 @@
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundred"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/ic_assignment_black_24dp" />
+                    app:srcCompat="@drawable/ic_event_available_black_24dp"
+                    android:contentDescription="@string/todo"
+                    tools:ignore="VectorDrawableCompat" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Mes Tâches"
+                    android:text="@string/mes_taches"
                     android:textStyle="bold" />
 
                 <View
@@ -104,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Consulter mes tâches"
+                    android:text="@string/consulter_mes_taches"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
@@ -124,12 +130,13 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <android.support.v7.widget.CardView
-            android:id="@+id/depenseCardView"
+            android:id="@+id/congeCardView"
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:foreground="?android:attr/selectableItemBackground"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -142,13 +149,15 @@
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundred"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/ic_weekend_black_24dp" />
+                    app:srcCompat="@drawable/ic_weekend_black_24dp"
+                    android:contentDescription="@string/todo"
+                    tools:ignore="VectorDrawableCompat" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Mon Congé"
+                    android:text="@string/mon_conge"
                     android:textStyle="bold" />
 
                 <View
@@ -162,19 +171,20 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Demander un congé"
+                    android:text="@string/demander_un_conge"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/tacheCardView"
+            android:id="@+id/salaireCardView"
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:foreground="?android:attr/selectableItemBackground"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -187,13 +197,15 @@
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundred"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/ic_attach_money_black_24dp" />
+                    app:srcCompat="@drawable/ic_attach_money_black_24dp"
+                    android:contentDescription="@string/todo"
+                    tools:ignore="VectorDrawableCompat" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Mon Salaire"
+                    android:text="@string/mon_salaire"
                     android:textStyle="bold" />
 
                 <View
@@ -207,7 +219,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Demander un avanece"
+                    android:text="@string/demander_un_avance"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
@@ -227,12 +239,13 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <android.support.v7.widget.CardView
-            android:id="@+id/dashboardCardView"
+            android:id="@+id/rapprtCardView"
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:foreground="?android:attr/selectableItemBackground"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -245,13 +258,15 @@
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundred"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/ic_assignment_black_24dp" />
+                    app:srcCompat="@drawable/ic_assignment_black_24dp"
+                    android:contentDescription="@string/todo"
+                    tools:ignore="VectorDrawableCompat" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Mes Rapports"
+                    android:text="@string/mes_rapports"
                     android:textStyle="bold" />
 
                 <View
@@ -265,19 +280,20 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Réaliser un rapport"
+                    android:text="@string/realiser_un_rapport"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/statististiqueCardView"
+            android:id="@+id/parametreCardView"
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:foreground="?android:attr/selectableItemBackground"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -290,13 +306,15 @@
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundred"
                     android:padding="10dp"
-                    app:srcCompat="@drawable/ic_settings_black_24dp" />
+                    app:srcCompat="@drawable/ic_settings_black_24dp"
+                    android:contentDescription="@string/todo"
+                    tools:ignore="VectorDrawableCompat" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Paramètres"
+                    android:text="@string/action_settings"
                     android:textStyle="bold" />
 
                 <View
@@ -310,7 +328,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Editer les paramètres"
+                    android:text="@string/editer_les_parametres"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>

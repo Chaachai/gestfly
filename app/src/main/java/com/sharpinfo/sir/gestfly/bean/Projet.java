@@ -120,8 +120,8 @@ public class Projet implements Serializable {
     public String toString() {
         return "Projet{" +
                 "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", description='" + description + '\'' +
+                ", etat='" + nom + '\'' +
+                ", textView1='" + description + '\'' +
                 ", dateDebut=" + dateDebut +
                 ", dateCreation=" + dateCreation +
                 ", budget=" + budget +

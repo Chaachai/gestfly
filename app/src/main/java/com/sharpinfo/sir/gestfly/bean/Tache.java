@@ -106,10 +106,10 @@ public class Tache implements Serializable {
     toString() {
         return "Tache{" +
                 "id=" + id +
-                ", nom='" + nom + '\'' +
+                ", etat='" + nom + '\'' +
                 ", dateDebut=" + dateDebut +
                 ", dateCreation=" + dateCreation +
-                ", description='" + description + '\'' +
+                ", textView1='" + description + '\'' +
                 '}';
     }
 }

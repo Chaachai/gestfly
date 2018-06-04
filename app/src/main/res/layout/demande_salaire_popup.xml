@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <ImageButton
+        android:id="@+id/dismiss_demande_salaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="2dp"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_dialog"
+        android:contentDescription="@string/todo" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="73dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/choisissez_un_type"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageAvance"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="34dp"
+        android:clickable="true"
+        android:onClick="goToDemandeAvance"
+        app:layout_constraintEnd_toStartOf="@+id/imageAugmentation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:srcCompat="@drawable/advance_salary"
+        android:contentDescription="@string/todo"
+        android:focusable="true" />
+
+    <ImageView
+        android:id="@+id/imageAugmentation"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="34dp"
+        android:clickable="true"
+        android:onClick="goToDemandeAugmentation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageAvance"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:srcCompat="@drawable/increase_salary"
+        android:contentDescription="@string/todo"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/textAugmentation"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/demande_d_augmentation_de_salaire"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:clickable="true"
+        android:onClick="goToDemandeAugmentation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageAugmentation"
+        app:layout_constraintStart_toStartOf="@+id/imageAugmentation"
+        app:layout_constraintTop_toBottomOf="@+id/imageAugmentation"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/textAvance"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/demande_d_avance_sur_salaire"
+        android:textAlignment="center"
+        android:clickable="true"
+        android:onClick="goToDemandeAvance"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageAvance"
+        app:layout_constraintStart_toStartOf="@+id/imageAvance"
+        app:layout_constraintTop_toBottomOf="@+id/imageAvance"
+        android:focusable="true" />
+
+</android.support.constraint.ConstraintLayout>

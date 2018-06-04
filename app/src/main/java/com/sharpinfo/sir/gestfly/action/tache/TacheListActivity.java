@@ -1,4 +1,4 @@
-package com.sharpinfo.sir.gestfly.action.projet;
+package com.sharpinfo.sir.gestfly.action.tache;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,64 +17,64 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.sharpinfo.sir.gestfly.R;
-import com.sharpinfo.sir.gestfly.adapter.ProjetAdapter;
-import com.sharpinfo.sir.gestfly.bean.Projet;
+import com.sharpinfo.sir.gestfly.adapter.TacheAdapter;
+import com.sharpinfo.sir.gestfly.bean.Tache;
 import com.sharpinfo.sir.gestfly.helper.SimpleDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjetListActivity extends AppCompatActivity {
+public class TacheListActivity extends AppCompatActivity {
 
     private Context mContext = this;
-    RecyclerView projetRecyclerView;
+    RecyclerView tacheRecyclerView;
     SearchView searchView;
-    ProjetAdapter projetAdapter;
+    TacheAdapter tacheAdapter;
 
-    List<Projet> projets;
+    List<Tache> taches;
 
     private void injecterGUI() {
-        projetRecyclerView = findViewById(R.id.projetRecyclerView);
+        tacheRecyclerView = findViewById(R.id.tacheRecyclerView);
     }
 
     private void initAdapter() {
-        projets = new ArrayList<>();     // REPLACE THE ARRAY LIST WITH THE LIST FROM THE SERVER...
+        taches = new ArrayList<>();     // REPLACE THE ARRAY LIST WITH THE LIST FROM THE SERVER...
 
         // *************************************************************************************************
 
-        Projet p1 = new Projet();
-        Projet p2 = new Projet();
-        Projet p3 = new Projet();
-        Projet p4 = new Projet();
+        Tache t1 = new Tache();
+        Tache t2 = new Tache();
+        Tache t3 = new Tache();
+        Tache t4 = new Tache();
 
-        p1.setNom("Nom du Projet1");
-        p2.setNom("Nom du Projet2");
-        p3.setNom("Nom du Projet3");
-        p4.setNom("Nom du Projet4");
+        t1.setNom("Nom de la tâch 1");
+        t2.setNom("Nom de la tâch 2");
+        t3.setNom("Nom de la tâch 3");
+        t4.setNom("Nom de la tâch 4");
 
-        projets.add(p1);
-        projets.add(p2);
-        projets.add(p3);
-        projets.add(p4);
+        taches.add(t1);
+        taches.add(t2);
+        taches.add(t3);
+        taches.add(t4);
 
         // *************************************************************************************************
 
+        tacheAdapter = new TacheAdapter(taches);
 
-        projetAdapter = new ProjetAdapter(projets);
+        tacheRecyclerView.setAdapter(tacheAdapter);
+        tacheRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
 
-        projetRecyclerView.setAdapter(projetAdapter);
-        projetRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-
-        projetRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(
+        tacheRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(
                 getApplicationContext()
         ));
 
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_projet_list);
+        setContentView(R.layout.activity_tache_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -103,24 +103,24 @@ public class ProjetListActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                final List<Projet> filteredProjets = filter(projets, newText);
-                projetAdapter.setfilter(filteredProjets);
+                final List<Tache> filteredTaches = filter(taches, newText);
+                tacheAdapter.setfilter(filteredTaches);
                 return true;
             }
         });
         return true;
     }
 
-    private List<Projet> filter(List<Projet> projetsUnfiltered, String query) {
+    private List<Tache> filter(List<Tache> tachesUnfiltered, String query) {
         query = query.toLowerCase();
-        final List<Projet> filteredProjets = new ArrayList<>();
-        for (Projet projet : projetsUnfiltered) {
-            final String text = projet.getNom().toLowerCase();
+        final List<Tache> filteredTaches = new ArrayList<>();
+        for (Tache tache : tachesUnfiltered) {
+            final String text = tache.getNom().toLowerCase();
             if (text.contains(query)) {
-                filteredProjets.add(projet);
+                filteredTaches.add(tache);
             }
         }
-        return filteredProjets;
+        return filteredTaches;
     }
 
 }

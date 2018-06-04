@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#dddddd"
+    android:background="@drawable/gray_background"
     tools:context=".action.user.LoginActivity"
     tools:layout_editor_absoluteY="81dp">
 
@@ -30,8 +30,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Connexion"
-        android:textColor="#000000"
+        android:text="@string/connexion"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
@@ -44,8 +44,8 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username :"
-        android:textColor="#000000"
+        android:text="@string/username_label"
+        android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/edtUsername"
         app:layout_constraintStart_toStartOf="@+id/edtUsername" />
@@ -58,7 +58,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/username"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/edtPassword"
@@ -75,14 +75,16 @@
         app:layout_constraintBottom_toBottomOf="@+id/edtUsername"
         app:layout_constraintStart_toStartOf="@+id/edtUsername"
         app:layout_constraintTop_toTopOf="@+id/edtUsername"
-        app:srcCompat="@drawable/ic_person_black_24dp" />
+        app:srcCompat="@drawable/ic_person_black_24dp"
+        android:contentDescription="@string/todo"
+        tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password :"
-        android:textColor="#000000"
+        android:text="@string/password_label"
+        android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/edtPassword"
         app:layout_constraintStart_toStartOf="@+id/edtPassword" />
@@ -95,7 +97,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
@@ -112,7 +114,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/edtPassword"
         app:layout_constraintStart_toStartOf="@+id/edtPassword"
         app:layout_constraintTop_toTopOf="@+id/edtPassword"
-        app:srcCompat="@drawable/ic_vpn_key_black_24dp" />
+        app:srcCompat="@drawable/ic_vpn_key_black_24dp"
+        android:contentDescription="@string/todo"
+        tools:ignore="VectorDrawableCompat" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -122,8 +126,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/round_green_button"
-        android:text="Se connecter"
-        android:textColor="#FFFFFF"
+        android:text="@string/se_connecter"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="@+id/viewPager2"
         app:layout_constraintStart_toStartOf="@+id/viewPager2" />
@@ -135,7 +139,7 @@
         android:layout_marginBottom="68dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Mot de passe oublié ?"
+        android:text="@string/mot_de_passe_oubli"
         android:textColor="#2b70a8"
         android:textSize="16sp"
         android:textStyle="bold"

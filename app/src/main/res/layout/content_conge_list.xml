@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/gray_background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".action.projet.ProjetListActivity"
-    tools:showIn="@layout/activity_projet_list">
+    tools:context=".action.conge.CongeListActivity"
+    tools:showIn="@layout/activity_conge_list">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/projetRecyclerView"
+        android:id="@+id/congeRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

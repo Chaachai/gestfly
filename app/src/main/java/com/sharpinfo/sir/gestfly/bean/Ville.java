@@ -50,7 +50,7 @@ public class Ville implements Serializable {
     public String toString() {
         return "Ville{" +
                 "id=" + id +
-                ", nom='" + nom + '\'' +
+                ", etat='" + nom + '\'' +
                 '}';
     }
 }

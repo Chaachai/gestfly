@@ -1,26 +1,51 @@
 <resources>
     <string name="app_name">GestFly</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">Contacts permissions are needed for providing email completions.</string>
-    <string name="no_text"> </string>
-    <string name="registration_message">You are not registered yet. Use the registration button to complete your registration.</string>
-    <string name="registration_failed">Your email or password is already in use</string>
-    <string-array name="autocomplete">
-        <item>johnpaul@yahoo.com</item>
-        <item>marykate@yahoo.com</item>
-        <item>kelvinjames@yahoo.com</item>
-        <item>henrysweart@gmail.com</item>
-        <item>gracepowell@yahoo.com</item>
-    </string-array>
-    <string name="title_activity_side_menu">SideMenuActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_projet_list">ProjetListActivity</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="title_activity_projet_list">Liste des projets</string>
+    <string name="search">Recherche</string>
+    <string name="welcome">Bienvenue à GestFly</string>
+    <string name="connexion">Connexion</string>
+    <string name="username_label">Username :</string>
+    <string name="username">Username</string>
+    <string name="password_label">Password :</string>
+    <string name="password">Password</string>
+    <string name="se_connecter">Se connecter</string>
+    <string name="mot_de_passe_oubli">Mot de passe oublié ?</string>
+    <string name="todo">TODO</string>
+    <string name="hello">Hello</string>
+    <string name="mes_projets">Mes Projets</string>
+    <string name="consulter_mes_projets">Consulter mes projets</string>
+    <string name="mes_taches">Mes Tâches</string>
+    <string name="consulter_mes_taches">Consulter mes tâches</string>
+    <string name="mon_conge">Mon Congé</string>
+    <string name="demander_un_conge">Demander un congé</string>
+    <string name="mon_salaire">Mon Salaire</string>
+    <string name="demander_un_avance">Demander un avance</string>
+    <string name="mes_rapports">Mes Rapports</string>
+    <string name="realiser_un_rapport">Réaliser un rapport</string>
+    <string name="editer_les_parametres">Editer les paramètres</string>
+    <string name="nom_du_projet">Nom du projet</string>
+    <string name="title_activity_tache_list">Liste des tâches</string>
+    <string name="nom_de_la_tache">Nom de la tâche</string>
+    <string name="title_activity_conge_list">Liste des demandes de congé</string>
+    <string name="en_cours">En cours</string>
+    <string name="min_date">05-06-2018</string>
+    <string name="a">à</string>
+    <string name="max_date">07-06-2018</string>
+    <string name="modifier">Modifier</string>
+    <string name="supprimer">Supprimer</string>
+    <string name="modifier_la_demande_du_cong">Modifier la demande du congé</string>
+    <string name="la_date_de_debut_label">La date de début :</string>
+    <string name="la_date_de_reprise_label">La date de reprise :</string>
+    <string name="la_date_de_reprise_hint">La date de reprise</string>
+    <string name="la_date_de_debut_hint">La date de début</string>
+    <string name="nouvelle_demande_de_conge">Nouvelle demande de congé</string>
+    <string name="valider">Valider</string>
+    <string name="title_activity_salaire_list">Liste des demandes de salaire</string>
+    <string name="avance_du_mois">Avance du mois</string>
+    <string name="dhs">DHs</string>
+    <string name="augmentation_de">Augmentation de</string>
+    <string name="choisissez_un_type">Choisissez un type</string>
+    <string name="demande_d_augmentation_de_salaire">Demande d\'augmentation de salaire</string>
+    <string name="demande_d_avance_sur_salaire">Demande d\'avance sur salaire</string>
 </resources>
