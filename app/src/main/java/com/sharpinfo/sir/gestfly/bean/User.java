@@ -2,6 +2,8 @@ package com.sharpinfo.sir.gestfly.bean;
 
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -9,7 +11,9 @@ import java.util.Objects;
 public class User implements Serializable {
 
     private static final Long serialVersionUID = 1L;
-    private String id;
+
+    private Long id;
+    private String username;
     private String password;
     private String lastName;
     private String firstName;
@@ -29,12 +33,13 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String id) {
+    public User(Long id) {
         this.id = id;
     }
 
-    public User(String id, String password, String lastName, String firstName, String email, String adresse, String phone, String zipCode, String image, boolean blocked, Date lastLogin, Date passwordRequestedAt, int nbrConnection, Long roleId, Long villeId, Long jobId) {
+    public User(Long id,String username, String password, String lastName, String firstName, String email, String adresse, String phone, String zipCode, String image, boolean blocked, Date lastLogin, Date passwordRequestedAt, int nbrConnection, Long roleId, Long villeId, Long jobId) {
         this.id = id;
+        this.username = username;
         this.password = password;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -52,12 +57,20 @@ public class User implements Serializable {
         job.setId(jobId);
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

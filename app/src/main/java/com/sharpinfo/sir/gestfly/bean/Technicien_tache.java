@@ -17,7 +17,7 @@ public class Technicien_tache implements Serializable {
         this.id = id;
     }
 
-    public Technicien_tache(Long id, boolean etat, Long tacheId, String userId) {
+    public Technicien_tache(Long id, boolean etat, Long tacheId, Long userId) {
         this.id = id;
         this.etat = etat;
         tache.setId(tacheId);

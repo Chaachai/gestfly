@@ -20,7 +20,7 @@ public class Etat implements Serializable {
         this.id = id;
     }
 
-    public Etat(Long id, Date date, Long statutId, Long projetId, Long tacheId, String userId) {
+    public Etat(Long id, Date date, Long statutId, Long projetId, Long tacheId, Long userId) {
         this.id = id;
         this.date = date;
         statut.setId(statutId);

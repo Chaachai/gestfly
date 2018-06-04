@@ -11,6 +11,7 @@ public final class DbStructure {
 
         public static final String T_NAME = "user";
         public static final String C_ID = "id";
+        public static final String C_USERNAME = "username";
         public static final String C_PASSWORD = "password";
         public static final String C_LASTNAME = "last_name";
         public static final String C_FIRSTNAME = "first_name";
@@ -27,7 +28,8 @@ public final class DbStructure {
         public static final String C_ID_VILLE = "ville_id";
         public static final String C_ID_JOB = "job_id";
         public static final String SQL_CREATE = "create table " + T_NAME + "("
-                + C_ID + " TEXT PRIMARY KEY, "
+                + C_ID + " INTEGER PRIMARY KEY, "
+                + C_USERNAME + " TEXT, "
                 + C_PASSWORD + " TEXT, "
                 + C_LASTNAME + " TEXT, "
                 + C_FIRSTNAME + " TEXT, "

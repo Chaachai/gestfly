@@ -19,7 +19,7 @@ public class Conge implements Serializable {
         this.id = id;
     }
 
-    public Conge(Long id, Date dateDebut, Date dateReprise, String employeId, Long etatId) {
+    public Conge(Long id, Date dateDebut, Date dateReprise, Long employeId, Long etatId) {
         this.id = id;
         this.dateDebut = dateDebut;
         this.dateReprise = dateReprise;

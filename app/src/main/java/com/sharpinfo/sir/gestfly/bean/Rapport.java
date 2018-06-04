@@ -20,7 +20,7 @@ public class Rapport implements Serializable {
         this.id = id;
     }
 
-    public Rapport(String id, Date date, String text, Long tacheId, Long projetId, String userId) {
+    public Rapport(String id, Date date, String text, Long tacheId, Long projetId, Long userId) {
         this.id = id;
         this.date = date;
         this.text = text;

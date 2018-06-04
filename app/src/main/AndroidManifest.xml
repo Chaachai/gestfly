@@ -21,11 +21,11 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".action.menu.MenuTechnicienActivity"
-            android:label="Welcome to GestFly"></activity>
+            android:label="Welcome to GestFly" />
         <activity
             android:name=".action.projet.ProjetListActivity"
             android:label="@string/title_activity_projet_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

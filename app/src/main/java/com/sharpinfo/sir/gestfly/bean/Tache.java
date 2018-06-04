@@ -17,7 +17,7 @@ public class Tache implements Serializable {
     public Tache() {
     }
 
-    public Tache(Long id, String nom, Date dateDebut, Date dateCreation, String description, Long projetId, String creatorId) {
+    public Tache(Long id, String nom, Date dateDebut, Date dateCreation, String description, Long projetId, Long creatorId) {
         this.id = id;
         this.nom = nom;
         this.dateDebut = dateDebut;
