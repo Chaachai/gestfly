@@ -53,7 +53,8 @@ public class UserDao extends AbstractDao<User> {
         boolean blocked = cursor.getInt(cursor.getColumnIndex(DbStructure.User.C_BLOCKED)) > 0;
 
         return new User(
-                cursor.getString(cursor.getColumnIndex(DbStructure.User.C_ID)),
+                cursor.getLong(cursor.getColumnIndex(DbStructure.User.C_ID)),
+                cursor.getString(cursor.getColumnIndex(DbStructure.User.C_USERNAME)),
                 cursor.getString(cursor.getColumnIndex(DbStructure.User.C_PASSWORD)),
                 cursor.getString(cursor.getColumnIndex(DbStructure.User.C_LASTNAME)),
                 cursor.getString(cursor.getColumnIndex(DbStructure.User.C_FIRSTNAME)),

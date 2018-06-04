@@ -20,7 +20,7 @@ public class Fichier implements Serializable {
         this.id = id;
     }
 
-    public Fichier(Long id, String nom, String type, Date date, String userId, boolean administrative) {
+    public Fichier(Long id, String nom, String type, Date date, Long userId, boolean administrative) {
         this.id = id;
         this.nom = nom;
         this.type = type;
