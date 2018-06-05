@@ -48,4 +48,16 @@
     <string name="choisissez_un_type">Choisissez un type</string>
     <string name="demande_d_augmentation_de_salaire">Demande d\'augmentation de salaire</string>
     <string name="demande_d_avance_sur_salaire">Demande d\'avance sur salaire</string>
+    <string name="username_required">Le champ \'Username\' est obligatoire !</string>
+    <string name="password_required">Le champ \'Password\' est obligatoire !</string>
+    <string name="passwor_or_username_incorrect">Mot de passe ou nom d\'utilisateur incorrect !</string>
+    <string name="message">Message</string>
+    <string name="montant_ajouter_hint">Montant à ajouter</string>
+    <string name="montant_ajouter_label">Montant à ajouter :</string>
+    <string name="envoyer">Envoyer</string>
+    <string name="votre_salaire_actuel_hint">Votre salaire actuel</string>
+    <string name="votre_salaire_actuel_label">Votre salaire actuel :</string>
+    <string name="message_label">Message :</string>
+    <string name="mois_avancer_label">Mois à avancer :</string>
+    <string name="mois_avancer_hint">Mois à avancer</string>
 </resources>
