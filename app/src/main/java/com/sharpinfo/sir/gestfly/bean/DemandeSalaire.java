@@ -25,7 +25,7 @@ public class DemandeSalaire implements Serializable {
         dateDemande = new Date();
     }
 
-    public DemandeSalaire(Long id, double salaireActuel, double montantAjouter, Date moisAvancer, String message, Date dateDemande, Long typeId, String userId, Long etatId) {
+    public DemandeSalaire(Long id, double salaireActuel, double montantAjouter, Date moisAvancer, String message, Date dateDemande, Long typeId, Long userId, Long etatId) {
         this.id = id;
         this.salaireActuel = salaireActuel;
         this.montantAjouter = montantAjouter;
