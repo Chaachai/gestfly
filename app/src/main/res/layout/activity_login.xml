@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="@+id/viewPager2"
         app:layout_constraintStart_toStartOf="@+id/viewPager2"
         app:layout_constraintTop_toTopOf="@+id/viewPager2"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintVertical_bias="0.013" />
 
     <TextView
         android:id="@+id/textView4"
@@ -72,11 +72,11 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="@+id/edtUsername"
         app:layout_constraintStart_toStartOf="@+id/edtUsername"
         app:layout_constraintTop_toTopOf="@+id/edtUsername"
         app:srcCompat="@drawable/ic_person_black_24dp"
-        android:contentDescription="@string/todo"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
@@ -111,11 +111,11 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="@+id/edtPassword"
         app:layout_constraintStart_toStartOf="@+id/edtPassword"
         app:layout_constraintTop_toTopOf="@+id/edtPassword"
         app:srcCompat="@drawable/ic_vpn_key_black_24dp"
-        android:contentDescription="@string/todo"
         tools:ignore="VectorDrawableCompat" />
 
     <Button
@@ -146,5 +146,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
         app:layout_constraintEnd_toEndOf="@+id/viewPager2"
         app:layout_constraintStart_toStartOf="@+id/viewPager2" />
+
+    <TextView
+        android:id="@+id/errorMsgLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toEndOf="@+id/viewPager2"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/viewPager2"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 </android.support.constraint.ConstraintLayout>

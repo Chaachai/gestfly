@@ -86,7 +86,7 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:background="@drawable/cerclebackgroundred"
+                    android:background="@drawable/cerclebackgroundgreen"
                     android:padding="10dp"
                     app:srcCompat="@drawable/ic_event_available_black_24dp"
                     android:contentDescription="@string/todo"
@@ -147,7 +147,7 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:background="@drawable/cerclebackgroundred"
+                    android:background="@drawable/cerclebackgroundblue"
                     android:padding="10dp"
                     app:srcCompat="@drawable/ic_weekend_black_24dp"
                     android:contentDescription="@string/todo"
@@ -195,7 +195,7 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:background="@drawable/cerclebackgroundred"
+                    android:background="@drawable/cerclebackgroundpurple"
                     android:padding="10dp"
                     app:srcCompat="@drawable/ic_attach_money_black_24dp"
                     android:contentDescription="@string/todo"
@@ -256,7 +256,7 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:background="@drawable/cerclebackgroundred"
+                    android:background="@drawable/cerclebackgroundpink"
                     android:padding="10dp"
                     app:srcCompat="@drawable/ic_assignment_black_24dp"
                     android:contentDescription="@string/todo"
@@ -304,7 +304,7 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:background="@drawable/cerclebackgroundred"
+                    android:background="@drawable/cerclebackgroundorange"
                     android:padding="10dp"
                     app:srcCompat="@drawable/ic_settings_black_24dp"
                     android:contentDescription="@string/todo"

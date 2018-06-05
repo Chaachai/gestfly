@@ -8,4 +8,9 @@
     <color name="darkGrey">#adadad</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="red">#cc0404</color>
+    <color name="purple">#ba0dd8</color>
+    <color name="pink">#d3326b</color>
+    <color name="green">#079e39</color>
+    <color name="orange">#f25309</color>
 </resources>

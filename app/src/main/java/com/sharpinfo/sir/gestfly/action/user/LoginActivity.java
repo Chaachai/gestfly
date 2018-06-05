@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sharpinfo.sir.gestfly.R;
 import com.sharpinfo.sir.gestfly.action.menu.MenuTechnicienActivity;
 import com.sharpinfo.sir.gestfly.bean.Projet;
 import com.sharpinfo.sir.gestfly.bean.Tache;
+import com.sharpinfo.sir.gestfly.bean.Technicien_tache;
 import com.sharpinfo.sir.gestfly.bean.User;
 import com.sharpinfo.sir.gestfly.helper.Dispacher;
 import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClient;
@@ -29,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     EditText edtUsername;
     EditText edtPassword;
+    TextView error;
     Button btnLogin;
 
     @Override
@@ -47,15 +50,33 @@ public class LoginActivity extends AppCompatActivity {
 
                 String username = edtUsername.getText().toString();
                 String password = edtPassword.getText().toString();
-
                 Log.d(TAG, username + ";" + password);
-                executeApiCall(username, password);
+                if (validateLogin(username, password)) {
+                    //do login
+                    executeApiCall(username, password);
+                }
+
 //                executeApiCall();
 //                //DO THE FUCKING LOGIN SHIT HERE (username, password) .......
 //                Dispacher.forward(LoginActivity.this, MenuTechnicienActivity.class);
 //                finish();
             }
         });
+    }
+
+    private boolean validateLogin(String username, String password) {
+        error = findViewById(R.id.errorMsgLogin);
+        if (username == null || username.trim().length() == 0) {
+            Toast.makeText(this, "Username is required", Toast.LENGTH_SHORT).show();
+            error.setText(R.string.username_required);
+            return false;
+        }
+        if (password == null || password.trim().length() == 0) {
+            Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show();
+            error.setText(R.string.password_required);
+            return false;
+        }
+        return true;
     }
 
 //    private void executeApiCall() {
@@ -81,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void executeApiCall(String username, String password) {
         Log.d(TAG, "executeApiCall");
-
+        error = findViewById(R.id.errorMsgLogin);
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         retrofit2.Call<User> call = apiInterface.loginUser(username, password);
 
@@ -90,12 +111,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(retrofit2.Call<User> call, Response<User> response) {
                 Log.d(TAG, "onresponse");
                 if (response.body() == null) {
+                    error.setText(R.string.passwor_or_username_incorrect);
                     Toast.makeText(LoginActivity.this, "Veuillez verifier vos identifiants",
                             Toast.LENGTH_SHORT).show();
-                    
+
                 } else if (response.body() != null) {
-                    Toast.makeText(LoginActivity.this, response.body().getId() + ":" + response.body().getUsername() + ":" + response.body().getPassword(),
-                            Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LoginActivity.this, response.body().getId() + ":" + response.body().getUsername() + ":" + response.body().getPassword(),
+//                            Toast.LENGTH_SHORT).show();
+                    Dispacher.forward(LoginActivity.this, MenuTechnicienActivity.class);
+                    finish();
                 }
             }
 
@@ -104,6 +128,8 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d(TAG, "failure");
                 t.printStackTrace();
                 Log.d(TAG, t.toString());
+                Toast.makeText(LoginActivity.this, "Verifiez votre connexion !",
+                        Toast.LENGTH_SHORT).show();
 //                if (t instanceof IOException) {
 //                    Toast.makeText(LoginActivity.this, "this is an actual network failure :( inform the user and possibly retry", Toast.LENGTH_SHORT).show();
 //                    // logging probably not necessary
