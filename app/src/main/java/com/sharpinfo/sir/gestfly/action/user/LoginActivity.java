@@ -16,6 +16,7 @@ import com.sharpinfo.sir.gestfly.bean.Tache;
 import com.sharpinfo.sir.gestfly.bean.Technicien_tache;
 import com.sharpinfo.sir.gestfly.bean.User;
 import com.sharpinfo.sir.gestfly.helper.Dispacher;
+import com.sharpinfo.sir.gestfly.helper.Session;
 import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClient;
 import com.sharpinfo.sir.gestfly.reftroFitApi.ApiInterface;
 
@@ -118,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (response.body() != null) {
 //                    Toast.makeText(LoginActivity.this, response.body().getId() + ":" + response.body().getUsername() + ":" + response.body().getPassword(),
 //                            Toast.LENGTH_SHORT).show();
+                    Session.setAttribute(response.body(), "connectedUser");
                     Dispacher.forward(LoginActivity.this, MenuTechnicienActivity.class);
                     finish();
                 }
