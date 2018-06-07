@@ -4,26 +4,23 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.sharpinfo.sir.gestfly.R;
 import com.sharpinfo.sir.gestfly.adapter.SalaireAdapter;
-import com.sharpinfo.sir.gestfly.bean.Conge;
 import com.sharpinfo.sir.gestfly.bean.DemandeSalaire;
 import com.sharpinfo.sir.gestfly.bean.TypeDemandeSalaire;
-import com.sharpinfo.sir.gestfly.bean.TypeEtatConge;
+import com.sharpinfo.sir.gestfly.bean.TypeEtatDemande;
 import com.sharpinfo.sir.gestfly.helper.Dispacher;
 import com.sharpinfo.sir.gestfly.helper.SimpleDividerItemDecoration;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,9 +42,9 @@ public class SalaireListActivity extends AppCompatActivity {
 
         // *************************************************************************************************
 
-        TypeEtatConge t1 = new TypeEtatConge();
-        TypeEtatConge t2 = new TypeEtatConge();
-        TypeEtatConge t3 = new TypeEtatConge();
+        TypeEtatDemande t1 = new TypeEtatDemande();
+        TypeEtatDemande t2 = new TypeEtatDemande();
+        TypeEtatDemande t3 = new TypeEtatDemande();
 
         t1.setLibelle("Accepté");
         t2.setLibelle("Refusé");
@@ -72,11 +69,11 @@ public class SalaireListActivity extends AppCompatActivity {
 
         d2.setEtat(t2);
         d2.setType(ts2);
-        d2.setMontantAjouter(5000.0);
+        d2.setMontantAjouter(new BigDecimal(5000.0));
 
         d3.setEtat(t1);
         d3.setType(ts2);
-        d3.setMontantAjouter(2000.0);
+        d3.setMontantAjouter(new BigDecimal(2000.0));
 
         d4.setEtat(t3);
         d4.setType(ts1);
@@ -84,7 +81,7 @@ public class SalaireListActivity extends AppCompatActivity {
 
         d5.setEtat(t3);
         d5.setType(ts2);
-        d5.setMontantAjouter(2500.0);
+        d5.setMontantAjouter(new BigDecimal(2500.0));
 
         salaires.add(d1);
         salaires.add(d2);

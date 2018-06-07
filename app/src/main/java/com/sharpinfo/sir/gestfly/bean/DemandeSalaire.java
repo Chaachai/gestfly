@@ -1,20 +1,21 @@
 package com.sharpinfo.sir.gestfly.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
 public class DemandeSalaire implements Serializable {
     private static final Long serialVersionUID = 1L;
     private Long id;
-    private double salaireActuel;
-    private double montantAjouter;
+    private BigDecimal salaireActuel;
+    private BigDecimal montantAjouter;
     private Date moisAvancer;
     private String message;
     private Date dateDemande;
     private TypeDemandeSalaire type = new TypeDemandeSalaire();
     private User user = new User();
-    private TypeEtatConge etat = new TypeEtatConge();
+    private TypeEtatDemande etat = new TypeEtatDemande();
 
     public DemandeSalaire() {
         dateDemande = new Date();
@@ -25,7 +26,7 @@ public class DemandeSalaire implements Serializable {
         dateDemande = new Date();
     }
 
-    public DemandeSalaire(Long id, double salaireActuel, double montantAjouter, Date moisAvancer, String message, Date dateDemande, Long typeId, Long userId, Long etatId) {
+    public DemandeSalaire(Long id, BigDecimal salaireActuel, BigDecimal montantAjouter, Date moisAvancer, String message, Date dateDemande, Long typeId, Long userId, Long etatId) {
         this.id = id;
         this.salaireActuel = salaireActuel;
         this.montantAjouter = montantAjouter;
@@ -45,19 +46,19 @@ public class DemandeSalaire implements Serializable {
         this.id = id;
     }
 
-    public double getSalaireActuel() {
+    public BigDecimal getSalaireActuel() {
         return salaireActuel;
     }
 
-    public void setSalaireActuel(double salaireActuel) {
+    public void setSalaireActuel(BigDecimal salaireActuel) {
         this.salaireActuel = salaireActuel;
     }
 
-    public double getMontantAjouter() {
+    public BigDecimal getMontantAjouter() {
         return montantAjouter;
     }
 
-    public void setMontantAjouter(double montantAjouter) {
+    public void setMontantAjouter(BigDecimal montantAjouter) {
         this.montantAjouter = montantAjouter;
     }
 
@@ -95,13 +96,13 @@ public class DemandeSalaire implements Serializable {
         this.user = user;
     }
 
-    public TypeEtatConge getEtat() {
+    public TypeEtatDemande getEtat() {
         if (etat == null)
-            etat = new TypeEtatConge();
+            etat = new TypeEtatDemande();
         return etat;
     }
 
-    public void setEtat(TypeEtatConge etat) {
+    public void setEtat(TypeEtatDemande etat) {
         this.etat = etat;
     }
 

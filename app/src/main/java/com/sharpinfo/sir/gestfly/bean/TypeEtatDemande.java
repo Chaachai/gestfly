@@ -3,15 +3,15 @@ package com.sharpinfo.sir.gestfly.bean;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class TypeEtatConge implements Serializable {
+public class TypeEtatDemande implements Serializable {
     private static final Long serialVersionUID = 1L;
     private Long id;
     private String libelle;
 
-    public TypeEtatConge() {
+    public TypeEtatDemande() {
     }
 
-    public TypeEtatConge(Long id, String libelle) {
+    public TypeEtatDemande(Long id, String libelle) {
         this.id = id;
         this.libelle = libelle;
     }
@@ -36,7 +36,7 @@ public class TypeEtatConge implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TypeEtatConge that = (TypeEtatConge) o;
+        TypeEtatDemande that = (TypeEtatDemande) o;
         return Objects.equals(id, that.id);
     }
 
@@ -48,7 +48,7 @@ public class TypeEtatConge implements Serializable {
 
     @Override
     public String toString() {
-        return "TypeEtatConge{" +
+        return "TypeEtatDemande{" +
                 "id=" + id +
                 ", libelle='" + libelle + '\'' +
                 '}';

@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,11 +21,19 @@ import com.sharpinfo.sir.gestfly.R;
 import com.sharpinfo.sir.gestfly.adapter.ProjetAdapter;
 import com.sharpinfo.sir.gestfly.bean.Projet;
 import com.sharpinfo.sir.gestfly.helper.SimpleDividerItemDecoration;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClient;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ProjetListActivity extends AppCompatActivity {
+
+    public static final String TAG = "ProjetListActivity";
 
     private Context mContext = this;
     RecyclerView projetRecyclerView;
@@ -37,30 +46,55 @@ public class ProjetListActivity extends AppCompatActivity {
         projetRecyclerView = findViewById(R.id.projetRecyclerView);
     }
 
+    private void executeApiCall(Long userId) {
+        Log.d(TAG, "executeApiCall");
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<List<Projet>> call = apiInterface.getProjetsByUser(userId);
+
+        call.enqueue(new Callback<List<Projet>>() {
+            @Override
+            public void onResponse(Call<List<Projet>> call, Response<List<Projet>> response) {
+                Log.d(TAG, "Onresponse");
+                List<Projet> projets = response.body();
+                for (Projet projet : projets) {
+                    Log.d(TAG, projet.toString());
+                    Log.d(TAG, projet.getCreator().toString());
+                    projetAdapter = new ProjetAdapter(projets);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Projet>> call, Throwable t) {
+                Log.d(TAG, "OnFailure");
+                t.printStackTrace();
+            }
+        });
+    }
+
     private void initAdapter() {
-        projets = new ArrayList<>();     // REPLACE THE ARRAY LIST WITH THE LIST FROM THE SERVER...
+//        projets = new ArrayList<>();     // REPLACE THE ARRAY LIST WITH THE LIST FROM THE SERVER...
+//
+//        // *************************************************************************************************
+//
+//        Projet p1 = new Projet();
+//        Projet p2 = new Projet();
+//        Projet p3 = new Projet();
+//        Projet p4 = new Projet();
+//
+//        p1.setNom("Nom du Projet1");
+//        p2.setNom("Nom du Projet2");
+//        p3.setNom("Nom du Projet3");
+//        p4.setNom("Nom du Projet4");
+//
+//        projets.add(p1);
+//        projets.add(p2);
+//        projets.add(p3);
+//        projets.add(p4);
+//
+//        // *************************************************************************************************
 
-        // *************************************************************************************************
-
-        Projet p1 = new Projet();
-        Projet p2 = new Projet();
-        Projet p3 = new Projet();
-        Projet p4 = new Projet();
-
-        p1.setNom("Nom du Projet1");
-        p2.setNom("Nom du Projet2");
-        p3.setNom("Nom du Projet3");
-        p4.setNom("Nom du Projet4");
-
-        projets.add(p1);
-        projets.add(p2);
-        projets.add(p3);
-        projets.add(p4);
-
-        // *************************************************************************************************
-
-
-        projetAdapter = new ProjetAdapter(projets);
+        executeApiCall(5L);
+//        projetAdapter = new ProjetAdapter(projets);
 
         projetRecyclerView.setAdapter(projetAdapter);
         projetRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));

@@ -9,10 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,16 +18,12 @@ import android.widget.ImageButton;
 import com.sharpinfo.sir.gestfly.R;
 import com.sharpinfo.sir.gestfly.adapter.CongeAdapter;
 import com.sharpinfo.sir.gestfly.bean.Conge;
-import com.sharpinfo.sir.gestfly.bean.TypeEtat;
-import com.sharpinfo.sir.gestfly.bean.TypeEtatConge;
+import com.sharpinfo.sir.gestfly.bean.TypeEtatDemande;
 import com.sharpinfo.sir.gestfly.helper.SimpleDividerItemDecoration;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class CongeListActivity extends AppCompatActivity {
 
@@ -49,9 +42,9 @@ public class CongeListActivity extends AppCompatActivity {
 
         // *************************************************************************************************
 
-        TypeEtatConge t1 = new TypeEtatConge();
-        TypeEtatConge t2 = new TypeEtatConge();
-        TypeEtatConge t3 = new TypeEtatConge();
+        TypeEtatDemande t1 = new TypeEtatDemande();
+        TypeEtatDemande t2 = new TypeEtatDemande();
+        TypeEtatDemande t3 = new TypeEtatDemande();
 
         t1.setLibelle("Accepté");
         t2.setLibelle("Refusé");

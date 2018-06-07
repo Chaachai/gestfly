@@ -1,5 +1,7 @@
 package com.sharpinfo.sir.gestfly.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -8,11 +10,16 @@ import java.util.Objects;
 public class Projet implements Serializable {
     private static final Long serialVersionUID = 1L;
     private Long id;
+    @SerializedName("nom")
     private String nom;
+
     private String description;
+    @SerializedName("dateDebutRealisation")
     private Date dateDebut;
     private Date dateCreation;
     private BigDecimal budget;
+    @SerializedName("user_id")
+    private Long user_id;
     private User creator = new User();
     private TypeEtat etat = new TypeEtat();
 
@@ -36,6 +43,14 @@ public class Projet implements Serializable {
 
     public Long getId() {
         return id;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     public void setId(Long id) {
@@ -83,8 +98,7 @@ public class Projet implements Serializable {
     }
 
     public User getCreator() {
-        if (creator == null)
-            creator = new User();
+        creator = new User(user_id);
         return creator;
     }
 
@@ -120,11 +134,12 @@ public class Projet implements Serializable {
     public String toString() {
         return "Projet{" +
                 "id=" + id +
-                ", etat='" + nom + '\'' +
-                ", textView1='" + description + '\'' +
+                ", nom='" + nom + '\'' +
+                ", description='" + description + '\'' +
                 ", dateDebut=" + dateDebut +
                 ", dateCreation=" + dateCreation +
                 ", budget=" + budget +
+                ", user_id=" + user_id +
                 '}';
     }
 }

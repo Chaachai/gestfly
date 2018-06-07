@@ -1,6 +1,7 @@
 package com.sharpinfo.sir.gestfly.reftroFitApi;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -20,7 +21,9 @@ public class ApiClient {
 //        }
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-        Retrofit.Builder builder = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create());
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+
+        Retrofit.Builder builder = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson));
 
         Retrofit retrofit = builder.client(httpClient.build()).build();
 

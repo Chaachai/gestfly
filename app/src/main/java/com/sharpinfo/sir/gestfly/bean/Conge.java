@@ -10,7 +10,7 @@ public class Conge implements Serializable {
     private Date dateDebut;
     private Date dateReprise;
     private User employe = new User();
-    private TypeEtatConge etat = new TypeEtatConge();
+    private TypeEtatDemande etat = new TypeEtatDemande();
 
     public Conge() {
     }
@@ -61,13 +61,13 @@ public class Conge implements Serializable {
         this.employe = employe;
     }
 
-    public TypeEtatConge getEtat() {
+    public TypeEtatDemande getEtat() {
         if (etat == null)
-            etat = new TypeEtatConge();
+            etat = new TypeEtatDemande();
         return etat;
     }
 
-    public void setEtat(TypeEtatConge etat) {
+    public void setEtat(TypeEtatDemande etat) {
         this.etat = etat;
     }
 
