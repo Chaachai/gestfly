@@ -60,4 +60,15 @@
     <string name="message_label">Message :</string>
     <string name="mois_avancer_label">Mois à avancer :</string>
     <string name="mois_avancer_hint">Mois à avancer</string>
+    <string name="profile">Profile</string>
+    <string name="changer_le_mot_de_passe">Changer le mot de passe</string>
+    <string name="se_deconnecter">Se déconnecter</string>
+
+    <string name="empty_directory">Empty Directory</string>
+    <string name="storage_removed">Storage was removed or unmounted.</string>
+    <string name="choose_file">Select a file</string>
+    <string name="error_selecting_file">Error selecting File</string>
+    <string name="internal_storage">Internal storage</string>
+
+
 </resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item app:showAsAction="always"
+        android:icon="@drawable/ic_menu_black_24dp"
+        android:title="@string/action_settings">
+        <menu>
+            <item
+                android:id="@+id/profile_option"
+                android:title="@string/profile"
+                android:icon="@drawable/ic_person_black_24dp"/>
+            <item
+                android:id="@+id/change_password_option"
+                android:title="@string/changer_le_mot_de_passe"
+                android:icon="@drawable/ic_vpn_key_black_24dp"/>
+            <item
+                android:id="@+id/sign_out_option"
+                android:icon="@drawable/ic_power_settings_new_black_24dp"
+                android:title="@string/se_deconnecter" />
+        </menu>
+    </item>
+
+
+</menu>
