@@ -16,10 +16,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.sharpinfo.sir.gestfly.R;
+import com.sharpinfo.sir.gestfly.action.tache.TacheListActivity;
 import com.sharpinfo.sir.gestfly.adapter.ProjetAdapter;
 import com.sharpinfo.sir.gestfly.bean.Projet;
+import com.sharpinfo.sir.gestfly.bean.User;
+import com.sharpinfo.sir.gestfly.helper.Session;
 import com.sharpinfo.sir.gestfly.helper.SimpleDividerItemDecoration;
 import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClient;
 import com.sharpinfo.sir.gestfly.reftroFitApi.ApiInterface;
@@ -46,55 +50,12 @@ public class ProjetListActivity extends AppCompatActivity {
         projetRecyclerView = findViewById(R.id.projetRecyclerView);
     }
 
-    private void executeApiCall(Long userId) {
-        Log.d(TAG, "executeApiCall");
-        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<Projet>> call = apiInterface.getProjetsByUser(userId);
-
-        call.enqueue(new Callback<List<Projet>>() {
-            @Override
-            public void onResponse(Call<List<Projet>> call, Response<List<Projet>> response) {
-                Log.d(TAG, "Onresponse");
-                List<Projet> projets = response.body();
-                for (Projet projet : projets) {
-                    Log.d(TAG, projet.toString());
-                    Log.d(TAG, projet.getCreator().toString());
-                    projetAdapter = new ProjetAdapter(projets);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Projet>> call, Throwable t) {
-                Log.d(TAG, "OnFailure");
-                t.printStackTrace();
-            }
-        });
-    }
 
     private void initAdapter() {
-//        projets = new ArrayList<>();     // REPLACE THE ARRAY LIST WITH THE LIST FROM THE SERVER...
-//
-//        // *************************************************************************************************
-//
-//        Projet p1 = new Projet();
-//        Projet p2 = new Projet();
-//        Projet p3 = new Projet();
-//        Projet p4 = new Projet();
-//
-//        p1.setNom("Nom du Projet1");
-//        p2.setNom("Nom du Projet2");
-//        p3.setNom("Nom du Projet3");
-//        p4.setNom("Nom du Projet4");
-//
-//        projets.add(p1);
-//        projets.add(p2);
-//        projets.add(p3);
-//        projets.add(p4);
-//
-//        // *************************************************************************************************
+        User user = (User) Session.getAttribut("connectedUser");
+        projets = findProjetsByUser(user.getId());
 
-        executeApiCall(5L);
-//        projetAdapter = new ProjetAdapter(projets);
+        projetAdapter = new ProjetAdapter(projets);
 
         projetRecyclerView.setAdapter(projetAdapter);
         projetRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
@@ -143,6 +104,41 @@ public class ProjetListActivity extends AppCompatActivity {
             }
         });
         return true;
+    }
+
+
+    private List<Projet> findProjetsByUser(Long userId) {
+        final List<Projet> res = new ArrayList<>();
+
+        Log.d(TAG, "executeApiCall");
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<List<Projet>> call = apiInterface.getProjetsByUser(userId);
+
+        call.enqueue(new Callback<List<Projet>>() {
+            @Override
+            public void onResponse(Call<List<Projet>> call, Response<List<Projet>> response) {
+                Log.d(TAG, "Onresponse");
+                List<Projet> prjets = response.body();
+                if (prjets == null) {
+                    Toast.makeText(ProjetListActivity.this, "Aucun projet ne vous est affecté", Toast.LENGTH_SHORT).show();
+                } else {
+                    for (Projet projet : prjets) {
+                        Log.d(TAG, projet.toString());
+                        Log.d(TAG, projet.getCreator().toString());
+                        res.add(projet);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Projet>> call, Throwable t) {
+                Log.d(TAG, "OnFailure");
+                t.printStackTrace();
+                Log.d(TAG, t.toString());
+                Toast.makeText(ProjetListActivity.this, "Echec , verifiez votre connexion !", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return res;
     }
 
     private List<Projet> filter(List<Projet> projetsUnfiltered, String query) {
