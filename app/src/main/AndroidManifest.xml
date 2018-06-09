@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.sharpinfo.sir.gestfly">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -9,11 +10,13 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".action.user.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,8 +55,31 @@
         <activity
             android:name=".action.salaire.DemandeAugmentationActivity"
             android:label="@string/demande_d_augmentation_de_salaire"
-            android:parentActivityName=".action.salaire.SalaireListActivity"></activity>
-        <activity android:name=".TestUploadFilesActivity"></activity>
+            android:parentActivityName=".action.salaire.SalaireListActivity" />
+        <activity android:name=".TestUploadFilesActivity" />
+        <activity
+            android:name=".action.rapport.RapportListActivity"
+            android:label="@string/title_activity_rapport_list"
+            android:parentActivityName=".action.menu.MenuTechnicienActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".action.rapport.RapportContentActivity"
+            android:label="Mes rapports"
+            android:parentActivityName=".action.rapport.RapportListActivity">
+
+        </activity>
+        <activity
+            android:name=".action.rapport.CreerRapportActivity"
+            android:label="Réaliser un rapport"
+            android:parentActivityName=".action.rapport.RapportListActivity">
+
+        </activity>
+        <activity
+            android:name=".action.conge.CreateCongeActivity"
+            android:label="Demander un congé"
+            android:parentActivityName=".action.conge.CongeListActivity">
+
+        </activity>
     </application>
 
 </manifest>

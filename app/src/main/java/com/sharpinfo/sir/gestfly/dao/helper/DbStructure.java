@@ -52,7 +52,7 @@ public final class DbStructure {
 
         public static final String T_NAME = "role";
         public static final String C_ID = "id";
-        public static final String C_LIBELLE = "libelle";
+        static final String C_LIBELLE = "libelle";
 
         public static final String SQL_CREATE = "create table " + T_NAME + "("
                 + C_ID + " INTEGER PRIMARY KEY NOT NULL, "
@@ -64,7 +64,7 @@ public final class DbStructure {
 
         public static final String T_NAME = "ville";
         public static final String C_ID = "id";
-        public static final String C_NOM = "etat";
+        static final String C_NOM = "titre";
 
         public static final String SQL_CREATE = "create table " + T_NAME + "("
                 + C_ID + " INTEGER PRIMARY KEY NOT NULL, "
@@ -76,7 +76,7 @@ public final class DbStructure {
 
         public static final String T_NAME = "job";
         public static final String C_ID = "id";
-        public static final String C_NOM = "etat";
+        static final String C_NOM = "titre";
 
         public static final String SQL_CREATE = "create table " + T_NAME + "("
                 + C_ID + " INTEGER PRIMARY KEY NOT NULL, "

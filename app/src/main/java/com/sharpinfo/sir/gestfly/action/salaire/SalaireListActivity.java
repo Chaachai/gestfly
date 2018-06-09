@@ -30,6 +30,7 @@ public class SalaireListActivity extends AppCompatActivity {
     private Context mContext = this;
     RecyclerView salaireRecyclerView;
     SalaireAdapter salaireAdapter;
+    AlertDialog alertDialog;
 
     List<DemandeSalaire> salaires;
 
@@ -107,7 +108,7 @@ public class SalaireListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salaire_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         ActionBar ab = getSupportActionBar();
@@ -117,7 +118,7 @@ public class SalaireListActivity extends AppCompatActivity {
         injecterGUI();
         initAdapter();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,7 +130,7 @@ public class SalaireListActivity extends AppCompatActivity {
 
 
                 builder.setView(mView);
-                final AlertDialog alertDialog = builder.create();
+                alertDialog = builder.create();
 
                 dismissButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -145,10 +146,12 @@ public class SalaireListActivity extends AppCompatActivity {
 
     public void goToDemandeAvance(View view) {
         Dispacher.forward(SalaireListActivity.this, DemandeAvanceActivity.class);
+        alertDialog.dismiss();
     }
 
 
     public void goToDemandeAugmentation(View view) {
         Dispacher.forward(SalaireListActivity.this, DemandeAugmentationActivity.class);
+        alertDialog.dismiss();
     }
 }

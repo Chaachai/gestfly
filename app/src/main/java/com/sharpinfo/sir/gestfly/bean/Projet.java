@@ -136,6 +136,8 @@ public class Projet implements Serializable {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", description='" + description + '\'' +
+                ", titre='" + nom + '\'' +
+                ", textView1='" + description + '\'' +
                 ", dateDebut=" + dateDebut +
                 ", dateCreation=" + dateCreation +
                 ", budget=" + budget +

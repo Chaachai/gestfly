@@ -13,6 +13,7 @@ import com.sharpinfo.sir.gestfly.R;
 import com.sharpinfo.sir.gestfly.TestUploadFilesActivity;
 import com.sharpinfo.sir.gestfly.action.conge.CongeListActivity;
 import com.sharpinfo.sir.gestfly.action.projet.ProjetListActivity;
+import com.sharpinfo.sir.gestfly.action.rapport.RapportListActivity;
 import com.sharpinfo.sir.gestfly.action.salaire.SalaireListActivity;
 import com.sharpinfo.sir.gestfly.action.tache.TacheListActivity;
 import com.sharpinfo.sir.gestfly.action.user.LoginActivity;
@@ -65,7 +66,7 @@ public class MenuTechnicienActivity extends AppCompatActivity implements View.On
                 Dispacher.forward(MenuTechnicienActivity.this, SalaireListActivity.class);
                 break;
             case R.id.rapprtCardView:
-                Dispacher.forward(MenuTechnicienActivity.this, TestUploadFilesActivity.class);
+                Dispacher.forward(MenuTechnicienActivity.this, RapportListActivity.class);
                 break;
             default:
                 break;

@@ -9,18 +9,28 @@
     tools:layout_editor_absoluteY="81dp">
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="280dp"
-        android:layout_height="431dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/panel_background"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/viewPager8"
+        android:layout_width="300dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/text_panel_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/text_panel_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager8" />
 
     <TextView
         android:id="@+id/textView12"
@@ -34,78 +44,67 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewPager"
-        app:layout_constraintEnd_toEndOf="@+id/viewPager"
-        app:layout_constraintHorizontal_bias="0.291"
-        app:layout_constraintStart_toStartOf="@+id/viewPager"
-        app:layout_constraintTop_toTopOf="@+id/viewPager"
-        app:layout_constraintVertical_bias="0.027" />
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager8"
+        app:layout_constraintEnd_toEndOf="@+id/viewPager8"
+        app:layout_constraintStart_toStartOf="@+id/viewPager8"
+        app:layout_constraintTop_toTopOf="@+id/viewPager8" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:text="@string/votre_salaire_actuel_label"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/salaire_actuel"
-        app:layout_constraintEnd_toEndOf="@+id/salaire_actuel"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/salaire_actuel" />
 
     <EditText
         android:id="@+id/salaire_actuel"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:hint="@string/votre_salaire_actuel_hint"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/montant_a_ajouter"
         app:layout_constraintEnd_toEndOf="@+id/viewPager"
-        app:layout_constraintStart_toStartOf="@+id/viewPager" />
+        app:layout_constraintStart_toStartOf="@+id/viewPager"
+        app:layout_constraintTop_toTopOf="@+id/viewPager" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:text="@string/montant_ajouter_label"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/montant_a_ajouter"
-        app:layout_constraintEnd_toEndOf="@+id/montant_a_ajouter"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/montant_a_ajouter" />
 
     <EditText
         android:id="@+id/montant_a_ajouter"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="@string/montant_ajouter_hint"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/augmentation_msg"
         app:layout_constraintEnd_toEndOf="@+id/viewPager"
-        app:layout_constraintStart_toStartOf="@+id/viewPager" />
+        app:layout_constraintStart_toStartOf="@+id/viewPager"
+        app:layout_constraintTop_toBottomOf="@+id/salaire_actuel" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:text="@string/message_label"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/augmentation_msg"
-        app:layout_constraintEnd_toEndOf="@+id/augmentation_msg"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/augmentation_msg" />
 
 
@@ -113,29 +112,30 @@
         android:id="@+id/augmentation_msg"
         android:layout_width="230dp"
         android:layout_height="76dp"
-        android:layout_marginBottom="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="@string/message"
         android:inputType="textMultiLine"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/envoyer_demande_augmentation"
         app:layout_constraintEnd_toEndOf="@+id/viewPager"
-        app:layout_constraintStart_toStartOf="@+id/viewPager" />
+        app:layout_constraintStart_toStartOf="@+id/viewPager"
+        app:layout_constraintTop_toBottomOf="@+id/montant_a_ajouter" />
 
     <Button
         android:id="@+id/envoyer_demande_augmentation"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/round_green_button"
         android:text="@string/envoyer"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/viewPager"
         app:layout_constraintEnd_toEndOf="@+id/viewPager"
-        app:layout_constraintStart_toStartOf="@+id/viewPager" />
+        app:layout_constraintStart_toStartOf="@+id/viewPager"
+        app:layout_constraintTop_toBottomOf="@+id/augmentation_msg" />
+
 
 </android.support.constraint.ConstraintLayout>
