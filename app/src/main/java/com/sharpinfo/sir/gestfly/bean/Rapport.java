@@ -6,7 +6,8 @@ import java.util.Objects;
 
 public class Rapport implements Serializable {
     private static final Long serialVersionUID = 1L;
-    private String id;
+    private Long id;
+    private String titre;
     private Date date;
     private String text;
     private Tache tache = new Tache();
@@ -14,14 +15,17 @@ public class Rapport implements Serializable {
     private User user = new User();
 
     public Rapport() {
+        date = new Date();
     }
 
-    public Rapport(String id) {
+    public Rapport(Long id) {
+        date = new Date();
         this.id = id;
     }
 
-    public Rapport(String id, Date date, String text, Long tacheId, Long projetId, Long userId) {
+    public Rapport(Long id, String titre, Date date, String text, Long tacheId, Long projetId, Long userId) {
         this.id = id;
+        this.titre = titre;
         this.date = date;
         this.text = text;
         tache.setId(tacheId);
@@ -29,12 +33,20 @@ public class Rapport implements Serializable {
         user.setId(userId);
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 
     public Date getDate() {
@@ -100,7 +112,8 @@ public class Rapport implements Serializable {
     @Override
     public String toString() {
         return "Rapport{" +
-                "id='" + id + '\'' +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
                 ", date=" + date +
                 ", text='" + text + '\'' +
                 '}';

@@ -1,44 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TestUploadFilesActivity">
+    tools:context="com.sharpinfo.sir.gestfly.TestUploadFilesActivity">
 
-    <Button
-        android:id="@+id/btn_upload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="142dp"
-        android:layout_marginStart="109dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="42dp"
+        android:layout_marginStart="42dp"
         android:layout_marginTop="16dp"
-        android:text="Choose file"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/todo" />
+
+    <EditText
+        android:id="@+id/img_title"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_marginEnd="45dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="20dp"
+        android:hint="enter image title"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/btn_choose"
-        android:layout_width="wrap_content"
+        android:id="@+id/chooseBn"
+        android:layout_width="308dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="163dp"
-        android:layout_marginStart="109dp"
-        android:layout_marginTop="120dp"
-        android:text="Upload"
+        android:layout_below="@id/img_title"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:text="choose image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_upload" />
+        app:layout_constraintTop_toBottomOf="@+id/img_title" />
 
-    <TextView
-        android:id="@+id/tvFileName"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/uploadBn"
+        android:layout_width="307dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="164dp"
-        android:layout_marginStart="138dp"
+        android:layout_below="@id/chooseBn"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:enabled="false"
+        android:text="Upload image"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="114dp" />
+        app:layout_constraintTop_toBottomOf="@+id/chooseBn" />
 
 </android.support.constraint.ConstraintLayout>

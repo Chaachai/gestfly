@@ -8,7 +8,7 @@ public class Ville implements Serializable {
     private Long id;
     private String nom;
 
-    public Ville() {
+    Ville() {
     }
 
     public Ville(Long id, String nom) {
@@ -50,7 +50,7 @@ public class Ville implements Serializable {
     public String toString() {
         return "Ville{" +
                 "id=" + id +
-                ", etat='" + nom + '\'' +
+                ", titre='" + nom + '\'' +
                 '}';
     }
 }

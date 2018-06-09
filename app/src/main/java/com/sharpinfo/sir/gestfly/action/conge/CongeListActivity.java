@@ -23,6 +23,7 @@ import com.sharpinfo.sir.gestfly.adapter.CongeAdapter;
 import com.sharpinfo.sir.gestfly.bean.Conge;
 import com.sharpinfo.sir.gestfly.bean.TypeEtat;
 import com.sharpinfo.sir.gestfly.bean.TypeEtatConge;
+import com.sharpinfo.sir.gestfly.helper.Dispacher;
 import com.sharpinfo.sir.gestfly.helper.SimpleDividerItemDecoration;
 
 import java.text.ParseException;
@@ -100,55 +101,21 @@ public class CongeListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conge_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
+        if (ab != null) {
+            ab.setDisplayHomeAsUpEnabled(true);
+        }
         injecterGUI();
         initAdapter();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                View mView = getLayoutInflater().inflate(R.layout.create_conge_popup, null);
-
-                ImageButton dismissButton = mView.findViewById(R.id.dismiss_create_conge);
-
-                final EditText editDateMin = mView.findViewById(R.id.createDateMinConge);
-                final EditText editDateMax = mView.findViewById(R.id.createDateMaxConge);
-                Button button = mView.findViewById(R.id.valider_conge_btn);
-
-                builder.setView(mView);
-                final AlertDialog alertDialog = builder.create();
-
-
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        // CALL THE METHOD THAT CREATE A NEW CONGE HERE ......
-
-                        alertDialog.dismiss();
-
-                        Snackbar snackbar = Snackbar.make(view, "La demande a été envoyée avec succès", Snackbar.LENGTH_LONG);
-                        snackbar.show();
-                    }
-                });
-
-                dismissButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        alertDialog.dismiss();
-                    }
-                });
-
-                alertDialog.show();
-
+                Dispacher.forward(CongeListActivity.this, CreateCongeActivity.class);
             }
         });
     }

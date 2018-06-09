@@ -4,10 +4,10 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient {
+public class ApiClientForImage {
 
 
-    private static final String BASE_URL = "http://10.0.3.2/gestfly/gestflyslimrest/";
+    private static final String BASE_URL = "http://10.0.3.2/gestfly/imageupload/";
 //    public static Retrofit retrofit = null;
 
 

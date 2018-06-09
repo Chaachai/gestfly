@@ -15,7 +15,9 @@ public class User implements Serializable {
     private Long id;
     private String username;
     private String password;
+    @SerializedName("last_name")
     private String lastName;
+    @SerializedName("first_name")
     private String firstName;
     private String email;
     private String adresse;
@@ -217,6 +219,7 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +

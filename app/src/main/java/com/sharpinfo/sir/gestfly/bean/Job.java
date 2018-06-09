@@ -8,7 +8,7 @@ public class Job implements Serializable {
     private Long id;
     private String nom;
 
-    public Job() {
+    Job() {
     }
 
     public Job(Long id, String nom) {
@@ -50,7 +50,7 @@ public class Job implements Serializable {
     public String toString() {
         return "Job{" +
                 "id=" + id +
-                ", etat='" + nom + '\'' +
+                ", titre='" + nom + '\'' +
                 '}';
     }
 }

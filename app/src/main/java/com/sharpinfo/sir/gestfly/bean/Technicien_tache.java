@@ -78,7 +78,7 @@ public class Technicien_tache implements Serializable {
     public String toString() {
         return "Technicien_tache{" +
                 "id=" + id +
-                ", etat=" + etat +
+                ", titre=" + etat +
                 '}';
     }
 }

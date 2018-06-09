@@ -5,21 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gray_background"
-    tools:context=".action.salaire.DemandeAvanceActivity">
+    tools:context=".action.salaire.DemandeAvanceActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="280dp"
-        android:layout_height="431dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/panel_background"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/viewPager7"
+        android:layout_width="300dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/text_panel_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="300dp"
+        android:layout_height="351dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/text_panel_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager7" />
 
     <TextView
         android:id="@+id/textView12"
@@ -33,83 +44,110 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewPager"
-        app:layout_constraintEnd_toEndOf="@+id/viewPager"
-        app:layout_constraintStart_toStartOf="@+id/viewPager"
-        app:layout_constraintTop_toTopOf="@+id/viewPager"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager7"
+        app:layout_constraintEnd_toEndOf="@+id/viewPager7"
+        app:layout_constraintStart_toStartOf="@+id/viewPager7"
+        app:layout_constraintTop_toTopOf="@+id/viewPager7" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:text="@string/mois_avancer_label"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/mois_avance"
-        app:layout_constraintEnd_toEndOf="@+id/mois_avance"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/mois_avance" />
+        app:layout_constraintBottom_toTopOf="@+id/mois_avance_create"
+        app:layout_constraintStart_toStartOf="@+id/mois_avance_create" />
 
     <EditText
-        android:id="@+id/mois_avance"
-        android:layout_width="230dp"
+        android:id="@+id/mois_avance_create"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="@string/mois_avancer_hint"
-        android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/avance_msg"
+        android:hint="@string/mois_1_12"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager"
         app:layout_constraintEnd_toEndOf="@+id/viewPager"
-        app:layout_constraintHorizontal_bias="0.352"
-        app:layout_constraintStart_toStartOf="@+id/viewPager" />
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="@+id/viewPager"
+        app:layout_constraintTop_toTopOf="@+id/viewPager"
+        app:layout_constraintVertical_bias="0.221" />
 
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:text="@string/message_label"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/avance_msg"
-        app:layout_constraintEnd_toEndOf="@+id/avance_msg"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/avance_msg" />
 
     <EditText
         android:id="@+id/avance_msg"
         android:layout_width="230dp"
         android:layout_height="76dp"
-        android:layout_marginBottom="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="@string/message"
         android:inputType="textMultiLine"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/envoyer_demande_avance"
         app:layout_constraintEnd_toEndOf="@+id/viewPager"
-        app:layout_constraintStart_toStartOf="@+id/viewPager" />
+        app:layout_constraintStart_toStartOf="@+id/viewPager"
+        app:layout_constraintTop_toBottomOf="@+id/mois_avance_create" />
 
     <Button
         android:id="@+id/envoyer_demande_avance"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/round_green_button"
         android:text="@string/envoyer"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/viewPager"
         app:layout_constraintEnd_toEndOf="@+id/viewPager"
-        app:layout_constraintStart_toStartOf="@+id/viewPager" />
+        app:layout_constraintStart_toStartOf="@+id/viewPager"
+        app:layout_constraintTop_toBottomOf="@+id/avance_msg" />
 
+
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/dash"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/mois_avance_create"
+        app:layout_constraintStart_toEndOf="@+id/mois_avance_create"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <EditText
+        android:id="@+id/year"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/_2019"
+        android:focusable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/textView17"
+        app:layout_constraintStart_toEndOf="@+id/textView17"
+        app:layout_constraintTop_toTopOf="@+id/textView17" />
 
 
 </android.support.constraint.ConstraintLayout>

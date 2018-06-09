@@ -4,7 +4,7 @@
     <string name="title_activity_projet_list">Liste des projets</string>
     <string name="search">Recherche</string>
     <string name="welcome">Bienvenue à GestFly</string>
-    <string name="connexion">Connexion</string>
+    <string name="connexion">S\'AUTHENTIFIER</string>
     <string name="username_label">Username :</string>
     <string name="username">Username</string>
     <string name="password_label">Password :</string>
@@ -52,10 +52,10 @@
     <string name="password_required">Le champ \'Password\' est obligatoire !</string>
     <string name="passwor_or_username_incorrect">Mot de passe ou nom d\'utilisateur incorrect !</string>
     <string name="message">Message</string>
-    <string name="montant_ajouter_hint">Montant à ajouter</string>
+    <string name="montant_ajouter_hint">Montant à ajouter (DH)</string>
     <string name="montant_ajouter_label">Montant à ajouter :</string>
     <string name="envoyer">Envoyer</string>
-    <string name="votre_salaire_actuel_hint">Votre salaire actuel</string>
+    <string name="votre_salaire_actuel_hint">Votre salaire actuel (DH)</string>
     <string name="votre_salaire_actuel_label">Votre salaire actuel :</string>
     <string name="message_label">Message :</string>
     <string name="mois_avancer_label">Mois à avancer :</string>
@@ -69,6 +69,19 @@
     <string name="choose_file">Select a file</string>
     <string name="error_selecting_file">Error selecting File</string>
     <string name="internal_storage">Internal storage</string>
+    <string name="title_activity_rapport_list">Mes rapports</string>
+    <string name="titre_du_rapport">Titre du rapport</string>
+    <string name="nom_du_proujet_ou_t_che">Nom du proujet ou tâche</string>
+    <string name="solomon_grundy_poem">Solomon Grundy, Born on a Monday, Christened on Tuesday, Married on Wednesday, Took ill on Thursday, Grew worse on Friday, Died on Saturday, Buried on Sunday, That was the end, Of Solomon Grundy.Solomon Grundy, Born on a Monday, Christened on Tuesday, Married on Wednesday, Took ill on Thursday, Grew worse on Friday, Died on Saturday, Buried on Sunday, That was the end, Of Solomon Grundy.</string>
+    <string name="_15_03_2018">15-03-2018</string>
+    <string name="le_titre_de_ce_rapport">Le titre de ce rapport</string>
+    <string name="chaachai_youssef">CHAACHAI Youssef</string>
+    <string name="titre_du_projet_ou_de_la_tache">Titre du projet ou de la tache</string>
+    <string name="r_aliser_un_rapport_pour_une_t_che">Réaliser un rapport pour une tâche</string>
+    <string name="r_aliser_un_rapport_pour_un_projet">Réaliser un rapport pour un projet</string>
+    <string name="mois_1_12">Mois (1-12)</string>
+    <string name="dash">/</string>
+    <string name="_2019">2019</string>
 
 
 </resources>
