@@ -16,7 +16,9 @@ import com.sharpinfo.sir.gestfly.R;
 import com.sharpinfo.sir.gestfly.adapter.CongeAdapter;
 import com.sharpinfo.sir.gestfly.bean.Conge;
 import com.sharpinfo.sir.gestfly.bean.TypeEtatDemande;
+import com.sharpinfo.sir.gestfly.bean.User;
 import com.sharpinfo.sir.gestfly.helper.Dispacher;
+import com.sharpinfo.sir.gestfly.helper.Session;
 import com.sharpinfo.sir.gestfly.helper.SimpleDividerItemDecoration;
 import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClient;
 import com.sharpinfo.sir.gestfly.reftroFitApi.ApiInterface;
@@ -44,7 +46,8 @@ public class CongeListActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        conges = findCongeByUser(5L);
+        User user = (User) Session.getAttribut("connectedUser");
+        conges = findCongeByUser(user.getId());
 
         congeAdapter = new CongeAdapter(conges);
 
@@ -75,9 +78,9 @@ public class CongeListActivity extends AppCompatActivity {
                         Log.d(TAG + "before", conge.getEtat().toString());
                         for (TypeEtatDemande type : typeEtatDemandes) {
                             if (conge.getEtat_id().equals(type.getId())) {
-                                Log.d("hahowa l'etat",type.toString());
+                                Log.d("hahowa l'etat", type.toString());
                                 conge.setEtat(type);
-                                Log.d( "ha lconge mora setEtat", conge.getEtat().toString());
+                                Log.d("ha lconge mora setEtat", conge.getEtat().toString());
                             }
                         }
                         Log.d(TAG, conge.toString());

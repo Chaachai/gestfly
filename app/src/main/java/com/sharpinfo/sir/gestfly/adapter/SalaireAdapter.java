@@ -237,33 +237,38 @@ public class SalaireAdapter extends RecyclerView.Adapter<SalaireAdapter.ViewHold
         TextView secondTextView = viewHolder.textView2;
         TextView thirdTextView = viewHolder.textView3;
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/yyyy", Locale.getDefault());
-        String dateString = "";
-        if(salaire.getMoisAvancer() != null){
-            dateString = dateFormat.format(salaire.getMoisAvancer());
-        }
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+//        String dateString = "";
+//        if (salaire.getMoisAvancer() != null) {
+//            dateString = dateFormat.format(salaire.getMoisAvancer());
+//        }
 
 
-        if (salaire.getEtat().getLibelle().equalsIgnoreCase("Accepté")) {
+//        if (salaire.getEtat().getLibelle().equalsIgnoreCase("Accepté")) {
+        if (salaire.getEtat_id() == 2) {
             etatTextView.setTextColor(Color.parseColor("#01a844"));
-        } else if (salaire.getEtat().getLibelle().equalsIgnoreCase("Refusé")) {
+//        } else if (salaire.getEtat().getLibelle().equalsIgnoreCase("Refusé")) {
+        } else if (salaire.getEtat_id() == 3) {
             etatTextView.setTextColor(Color.parseColor("#d60c0c"));
-        } else if (salaire.getEtat().getLibelle().equalsIgnoreCase("En cours")) {
+//        } else if (salaire.getEtat().getLibelle().equalsIgnoreCase("En cours")) {
+        } else if (salaire.getEtat_id() == 1) {
             etatTextView.setTextColor(Color.parseColor("#000000"));
         } else {
             etatTextView.setTextColor(Color.parseColor("#000000"));
         }
         etatTextView.setText(salaire.getEtat().getLibelle());
 
-        if(salaire.getType().getType().equalsIgnoreCase("augmentation")){
+//        if(salaire.getType().getType().equalsIgnoreCase("augmentation")){
+        if (salaire.getType_id() == 2) {
             firstTextView.setText(R.string.augmentation_de);
-            secondTextView.setText(salaire.getMontantAjouter()+"");
+            secondTextView.setText(salaire.getMontantAjouter() + "");
             thirdTextView.setText(R.string.dhs);
-        }else if(salaire.getType().getType().equalsIgnoreCase("avance")){
+//        }else if(salaire.getType().getType().equalsIgnoreCase("avance")){
+        } else if (salaire.getType_id() == 1) {
             firstTextView.setText(R.string.avance_du_mois);
-            secondTextView.setText(dateString);
+            secondTextView.setText(salaire.getMoisAvancer()+" ");
             thirdTextView.setText("");
-        }else{
+        } else {
             firstTextView.setText("");
             secondTextView.setText("");
             thirdTextView.setText("");

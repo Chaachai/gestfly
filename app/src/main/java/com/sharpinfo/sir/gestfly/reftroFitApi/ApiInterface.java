@@ -1,12 +1,15 @@
 package com.sharpinfo.sir.gestfly.reftroFitApi;
 
 import com.sharpinfo.sir.gestfly.bean.Conge;
+import com.sharpinfo.sir.gestfly.bean.DemandeSalaire;
 import com.sharpinfo.sir.gestfly.bean.Image;
 import com.sharpinfo.sir.gestfly.bean.Projet;
 import com.sharpinfo.sir.gestfly.bean.Tache;
+import com.sharpinfo.sir.gestfly.bean.TypeDemandeSalaire;
 import com.sharpinfo.sir.gestfly.bean.TypeEtatDemande;
 import com.sharpinfo.sir.gestfly.bean.User;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +43,9 @@ public interface ApiInterface {
     @GET("typeEtatDemandes")
     Call<List<TypeEtatDemande>> getAllTypeEtatDemandes();
 
+    @GET("typeDemandeSalaire")
+    Call<List<TypeDemandeSalaire>> getAllTypeDemandeSalaire();
+
     /******Insert*****/
     @POST("conge")
     @FormUrlEncoded
@@ -49,6 +55,24 @@ public interface ApiInterface {
             @Field("user_id") Long user_id
     );
 
+    @POST("demandeSalaireAvance")
+    @FormUrlEncoded
+    Call<Integer> createDemandeSalaireAvance(
+            @Field("date") String date,
+            @Field("message") String message,
+            @Field("moisavancer") Integer moisAvancer,
+            @Field("user_id") Long user_id
+    );
+
+    @POST("demandeSalaireAugmentation")
+    @FormUrlEncoded
+    Call<Integer> createDemandeSalaireAugmentation(
+            @Field("date") String date,
+            @Field("message") String message,
+            @Field("montantajouter") BigDecimal montantajouter,
+            @Field("salaireactuel") BigDecimal salaireActuel,
+            @Field("user_id") Long user_id
+    );
 
     /***FIND BY user**/
     @GET("projet/user/{id}")
@@ -59,4 +83,7 @@ public interface ApiInterface {
 
     @GET("conge/user/{id}")
     Call<List<Conge>> getCongesByUser(@Path("id") Long id);
+
+    @GET("demandesalaire/user/{id}")
+    Call<List<DemandeSalaire>> getDemandesSalaireByUser(@Path("id") Long id);
 }

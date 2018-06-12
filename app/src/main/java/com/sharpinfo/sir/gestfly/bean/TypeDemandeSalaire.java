@@ -11,6 +11,10 @@ public class TypeDemandeSalaire implements Serializable {
     public TypeDemandeSalaire() {
     }
 
+    public TypeDemandeSalaire(Long id) {
+        this.id = id;
+    }
+
     public TypeDemandeSalaire(Long id, String type) {
         this.id = id;
         this.type = type;
