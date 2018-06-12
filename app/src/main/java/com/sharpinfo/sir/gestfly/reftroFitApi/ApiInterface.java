@@ -25,7 +25,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("upload.php")
-    Call<Image> uploadImage(@Field("title") String title, @Field("image") String image);
+    Call<Integer> uploadImage(@Field("title") String title, @Field("image") String image);
 
 
     @GET("projets")

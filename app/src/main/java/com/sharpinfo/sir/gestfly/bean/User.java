@@ -1,7 +1,6 @@
 package com.sharpinfo.sir.gestfly.bean;
 
 
-
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -12,18 +11,22 @@ public class User implements Serializable {
 
     private static final Long serialVersionUID = 1L;
 
+    @SerializedName("ID")
     private Long id;
+    @SerializedName("USERNAME")
     private String username;
+    @SerializedName("PASSWORD")
     private String password;
-    @SerializedName("last_name")
+    @SerializedName("LAST_NAME")
     private String lastName;
-    @SerializedName("first_name")
+    @SerializedName("FIRST_NAME")
     private String firstName;
     private String email;
     private String adresse;
     private String phone;
     private String zipCode;
     private String image;
+    @SerializedName("ENABLED")
     private boolean blocked;
     private Date lastLogin;
     private Date passwordRequestedAt;
@@ -31,6 +34,12 @@ public class User implements Serializable {
     private Role role = new Role();
     private Ville ville = new Ville();
     private Job job = new Job();
+    @SerializedName("ROLES_ID")
+    private Long role_id;
+    @SerializedName("CITY_ID")
+    private Long city_id;
+    @SerializedName("JOB_ID")
+    private Long job_id;
 
     public User() {
     }
@@ -39,7 +48,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public User(Long id,String username, String password, String lastName, String firstName, String email, String adresse, String phone, String zipCode, String image, boolean blocked, Date lastLogin, Date passwordRequestedAt, int nbrConnection, Long roleId, Long villeId, Long jobId) {
+    public User(Long id, String username, String password, String lastName, String firstName, String email, String adresse, String phone, String zipCode, String image, boolean blocked, Date lastLogin, Date passwordRequestedAt, int nbrConnection, Long roleId, Long villeId, Long jobId) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -172,8 +181,8 @@ public class User implements Serializable {
     }
 
     public Role getRole() {
-        if(role == null)
-            role = new Role();
+        if (role == null)
+            role = new Role(role_id);
         return role;
     }
 
@@ -182,8 +191,8 @@ public class User implements Serializable {
     }
 
     public Ville getVille() {
-        if(ville == null)
-            ville = new Ville();
+        if (ville == null)
+            ville = new Ville(city_id);
         return ville;
     }
 
@@ -192,13 +201,37 @@ public class User implements Serializable {
     }
 
     public Job getJob() {
-        if(job == null)
-            job = new Job();
+        if (job == null)
+            job = new Job(job_id);
         return job;
     }
 
     public void setJob(Job job) {
         this.job = job;
+    }
+
+    public Long getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(Long role_id) {
+        this.role_id = role_id;
+    }
+
+    public Long getCity_id() {
+        return city_id;
+    }
+
+    public void setCity_id(Long city_id) {
+        this.city_id = city_id;
+    }
+
+    public Long getJob_id() {
+        return job_id;
+    }
+
+    public void setJob_id(Long job_id) {
+        this.job_id = job_id;
     }
 
     @Override

@@ -82,6 +82,11 @@
     <string name="mois_1_12">Mois (1-12)</string>
     <string name="dash">/</string>
     <string name="_2019">2019</string>
+    <string name="commencer_la_journee">Commencer la journée</string>
+    <string name="finir_la_journee">Finir la journée</string>
+    <string name="plus_tard">Plus tard</string>
+    <string name="declarer">Déclarer</string>
+    <string name="declare_your_day_text">Veuillez déclarer le début de votre journée.</string>
 
 
 </resources>

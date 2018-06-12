@@ -37,7 +37,7 @@ public class RapportListActivity extends AppCompatActivity {
     SearchView searchView;
     RapportAdapter rapportAdapter;
     AlertDialog alertDialog;
-
+    Integer rapportFlag = null;
     List<Rapport> rapports;
 
     private void injecterGUI() {
@@ -141,6 +141,8 @@ public class RapportListActivity extends AppCompatActivity {
         }
         injecterGUI();
         initAdapter();
+        rapportFlag = 0;
+        Session.setAttribute(rapportFlag, "rapportFlag");
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -206,12 +208,16 @@ public class RapportListActivity extends AppCompatActivity {
     }
 
     public void goToRapportProjet(View view) {
+        rapportFlag = 1;
+        Session.updateAttribute(rapportFlag, "rapportFlag");
         Dispacher.forward(RapportListActivity.this, CreerRapportActivity.class);
         alertDialog.dismiss();
     }
 
 
     public void goToRapportTache(View view) {
+        rapportFlag = 2;
+        Session.updateAttribute(rapportFlag, "rapportFlag");
         Dispacher.forward(RapportListActivity.this, CreerRapportActivity.class);
         alertDialog.dismiss();
     }
