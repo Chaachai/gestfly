@@ -241,9 +241,9 @@ public class CongeAdapter extends RecyclerView.Adapter<CongeAdapter.ViewHolder> 
         String dateMinString = dateFormat.format(conge.getDateDebut());
         String dateMaxString = dateFormat.format(conge.getDateReprise());
 
-        if (conge.getEtat().getLibelle().equalsIgnoreCase("Accepté")) {
+        if (conge.getEtat().getLibelle().equalsIgnoreCase("Acceptée")) {
             nomTextView.setTextColor(Color.parseColor("#01a844"));
-        } else if (conge.getEtat().getLibelle().equalsIgnoreCase("Refusé")) {
+        } else if (conge.getEtat().getLibelle().equalsIgnoreCase("Refusée")) {
             nomTextView.setTextColor(Color.parseColor("#d60c0c"));
         } else if (conge.getEtat().getLibelle().equalsIgnoreCase("En cours")) {
             nomTextView.setTextColor(Color.parseColor("#000000"));

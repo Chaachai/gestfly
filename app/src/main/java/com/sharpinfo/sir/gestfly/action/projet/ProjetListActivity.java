@@ -53,6 +53,7 @@ public class ProjetListActivity extends AppCompatActivity {
 
     private void initAdapter() {
         User user = (User) Session.getAttribut("connectedUser");
+        Log.d(TAG, String.valueOf(user.getId()));
         projets = findProjetsByUser(user.getId());
 
         projetAdapter = new ProjetAdapter(projets);

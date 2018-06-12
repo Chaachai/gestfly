@@ -11,6 +11,10 @@ public class Ville implements Serializable {
     Ville() {
     }
 
+    public Ville(Long id) {
+        this.id = id;
+    }
+
     public Ville(Long id, String nom) {
         this.id = id;
         this.nom = nom;

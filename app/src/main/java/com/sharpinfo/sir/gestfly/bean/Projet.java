@@ -9,17 +9,21 @@ import java.util.Objects;
 
 public class Projet implements Serializable {
     private static final Long serialVersionUID = 1L;
+    @SerializedName("ID")
     private Long id;
-    @SerializedName("nom")
+    @SerializedName("NOM")
     private String nom;
-
-    private String description;
-    @SerializedName("dateDebutRealisation")
+    //private String description;
+    @SerializedName("DATEDEBUTREALISATION")
     private Date dateDebut;
+    @SerializedName("DATECREATION")
     private Date dateCreation;
+
     private BigDecimal budget;
-    @SerializedName("user_id")
+    @SerializedName("USER_ID")
     private Long user_id;
+    @SerializedName("ETAT_ID")
+    private Long etat_id;
     private User creator = new User();
     private TypeEtat etat = new TypeEtat();
 
@@ -30,15 +34,22 @@ public class Projet implements Serializable {
         this.id = id;
     }
 
-    public Projet(Long id, String nom, String description, Date dateDebut, Date dateCreation, BigDecimal budget, Long creatorId, Long etatId) {
+    public Projet(Long id, String nom, Date dateDebut, Date dateCreation, BigDecimal budget, Long creatorId, Long etatId) {
         this.id = id;
         this.nom = nom;
-        this.description = description;
         this.dateDebut = dateDebut;
         this.dateCreation = dateCreation;
         this.budget = budget;
         creator.setId(creatorId);
         etat.setId(etatId);
+    }
+
+    public Long getEtat_id() {
+        return etat_id;
+    }
+
+    public void setEtat_id(Long etat_id) {
+        this.etat_id = etat_id;
     }
 
     public Long getId() {
@@ -65,13 +76,6 @@ public class Projet implements Serializable {
         this.nom = nom;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public Date getDateDebut() {
         return dateDebut;
@@ -98,6 +102,7 @@ public class Projet implements Serializable {
     }
 
     public User getCreator() {
+        if(creator == null)
         creator = new User(user_id);
         return creator;
     }
@@ -107,8 +112,8 @@ public class Projet implements Serializable {
     }
 
     public TypeEtat getEtat() {
-        if (etat == null)
-            etat = new TypeEtat();
+        if(etat == null)
+        etat = new TypeEtat(etat_id);
         return etat;
     }
 
@@ -135,13 +140,11 @@ public class Projet implements Serializable {
         return "Projet{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", description='" + description + '\'' +
-                ", titre='" + nom + '\'' +
-                ", textView1='" + description + '\'' +
                 ", dateDebut=" + dateDebut +
                 ", dateCreation=" + dateCreation +
                 ", budget=" + budget +
                 ", user_id=" + user_id +
+                ", etat_id=" + etat_id +
                 '}';
     }
 }

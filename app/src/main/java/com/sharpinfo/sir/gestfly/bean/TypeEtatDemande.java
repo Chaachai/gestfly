@@ -1,14 +1,22 @@
 package com.sharpinfo.sir.gestfly.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 public class TypeEtatDemande implements Serializable {
     private static final Long serialVersionUID = 1L;
+    @SerializedName("ID")
     private Long id;
+    @SerializedName("NOM")
     private String libelle;
 
     public TypeEtatDemande() {
+    }
+
+    public TypeEtatDemande(Long id) {
+        this.id = id;
     }
 
     public TypeEtatDemande(Long id, String libelle) {

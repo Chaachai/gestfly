@@ -1,14 +1,24 @@
 package com.sharpinfo.sir.gestfly.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 public class Conge implements Serializable {
     private static final Long serialVersionUID = 1L;
+    @SerializedName("ID")
     private Long id;
+    @SerializedName("DATEDEBUT")
     private Date dateDebut;
+    @SerializedName("DATEREPRISE")
     private Date dateReprise;
+    @SerializedName("ETAT_ID")
+    private Long etat_id;
+    @SerializedName("USER_ID")
+    private Long user_id;
+
     private User employe = new User();
     private TypeEtatDemande etat = new TypeEtatDemande();
 
@@ -17,6 +27,22 @@ public class Conge implements Serializable {
 
     public Conge(Long id) {
         this.id = id;
+    }
+
+    public Long getEtat_id() {
+        return etat_id;
+    }
+
+    public void setEtat_id(Long etat_id) {
+        this.etat_id = etat_id;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     public Conge(Long id, Date dateDebut, Date dateReprise, Long employeId, Long etatId) {
@@ -53,7 +79,7 @@ public class Conge implements Serializable {
 
     public User getEmploye() {
         if (employe == null)
-            employe = new User();
+            employe = new User(user_id);
         return employe;
     }
 
@@ -63,7 +89,7 @@ public class Conge implements Serializable {
 
     public TypeEtatDemande getEtat() {
         if (etat == null)
-            etat = new TypeEtatDemande();
+            etat = new TypeEtatDemande(etat_id);
         return etat;
     }
 
@@ -91,6 +117,8 @@ public class Conge implements Serializable {
                 "id=" + id +
                 ", dateDebut=" + dateDebut +
                 ", dateReprise=" + dateReprise +
+                ", etat_id=" + etat_id +
+                ", user_id=" + user_id +
                 '}';
     }
 }
