@@ -24,11 +24,13 @@ public class Projet implements Serializable {
     private Long user_id;
     @SerializedName("ETAT_ID")
     private Long etat_id;
-    private User creator = new User();
-    private TypeEtat etat = new TypeEtat();
+    private User creator ;
+    private TypeEtat etat;
 
     public Projet() {
     }
+
+
 
     public Projet(Long id) {
         this.id = id;

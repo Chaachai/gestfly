@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GestFly</string>
     <string name="action_settings">Paramètres</string>
-    <string name="title_activity_projet_list">Liste des projets</string>
+    <string name="title_activity_projet_list">Liste des taches</string>
     <string name="search">Recherche</string>
     <string name="welcome">Bienvenue à GestFly</string>
     <string name="connexion">S\'AUTHENTIFIER</string>
@@ -14,7 +14,7 @@
     <string name="todo">TODO</string>
     <string name="hello">Hello</string>
     <string name="mes_projets">Mes Projets</string>
-    <string name="consulter_mes_projets">Consulter mes projets</string>
+    <string name="consulter_mes_projets">Consulter mes taches</string>
     <string name="mes_taches">Mes Tâches</string>
     <string name="consulter_mes_taches">Consulter mes tâches</string>
     <string name="mon_conge">Mon Congé</string>

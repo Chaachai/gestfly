@@ -28,6 +28,15 @@ public class Tache implements Serializable {
     public Tache() {
     }
 
+    public Tache(Long id) {
+        this.id = id;
+    }
+
+    public Tache(Long id, String nom) {
+        this.id = id;
+        this.nom = nom;
+    }
+
     public Tache(Long id, String nom, Date dateDebut, Date dateCreation, String description, Long projetId, Long creatorId) {
         this.id = id;
         this.nom = nom;

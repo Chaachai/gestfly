@@ -84,8 +84,8 @@ public class RapportAdapter extends RecyclerView.Adapter<RapportAdapter.ViewHold
         titreTextView.setText(rapport.getTitre());
         dateTextView.setText(dateString);
 
-        Log.d("tag", "Projet ====== " + rapport.getProjet());
-        Log.d("tag", "Tache ====== " + rapport.getTache());
+//        Log.d("tag", "Projet ====== " + rapport.getProjet());
+//        Log.d("tag", "Tache ====== " + rapport.getTache());
 
 
         if (rapport.getProjet().getNom() != null && rapport.getTache().getNom() == null) {

@@ -11,11 +11,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.sharpinfo.sir.gestfly.R;
 import com.sharpinfo.sir.gestfly.adapter.RapportAdapter;
@@ -26,9 +28,15 @@ import com.sharpinfo.sir.gestfly.bean.User;
 import com.sharpinfo.sir.gestfly.helper.Dispacher;
 import com.sharpinfo.sir.gestfly.helper.Session;
 import com.sharpinfo.sir.gestfly.helper.SimpleDividerItemDecoration;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClient;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiInterface;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RapportListActivity extends AppCompatActivity {
 
@@ -45,76 +53,8 @@ public class RapportListActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        rapports = new ArrayList<>();     // REPLACE THE ARRAY LIST WITH THE LIST FROM THE SERVER...
-
-        // *************************************************************************************************
-
-        Rapport r1 = new Rapport();
-        Rapport r2 = new Rapport();
-        Rapport r3 = new Rapport();
-
         User user = (User) Session.getAttribut("connectedUser");
-
-        Projet p1 = new Projet();
-        Projet p2 = new Projet();
-        p1.setNom("Nom du projet 1");
-        p2.setNom("Nom du projet 2");
-
-        Tache t = new Tache();
-        t.setNom("Nom de la tache ");
-
-        r1.setProjet(p1);
-        r2.setTache(t);
-        r3.setProjet(p2);
-
-        r1.setTitre("Titre du rapport 1");
-        r2.setTitre("Titre du rapport 2");
-        r3.setTitre("Titre du rapport 3");
-
-        r1.setUser(user);
-        r2.setUser(user);
-        r3.setUser(user);
-
-        r1.setText("Solomon Grundy," +
-                "Born on a Monday," +
-                "Christened on Tuesday," +
-                "Married on Wednesday," +
-                "Took ill on Thursday," +
-                "Grew worse on Friday," +
-                "Died on Saturday," +
-                "Buried on Sunday," +
-                "That was the end," +
-                "Of Solomon Grundy.");
-
-        r2.setText("Solomon Grundy," +
-                "Born on a Monday," +
-                "Christened on Tuesday," +
-                "Married on Wednesday," +
-                "Took ill on Thursday," +
-                "Grew worse on Friday," +
-                "Died on Saturday," +
-                "Buried on Sunday," +
-                "That was the end," +
-                "Of Solomon Grundy.");
-
-        r3.setText("Solomon Grundy," +
-                "Born on a Monday," +
-                "Christened on Tuesday," +
-                "Married on Wednesday," +
-                "Took ill on Thursday," +
-                "Grew worse on Friday," +
-                "Died on Saturday," +
-                "Buried on Sunday," +
-                "That was the end," +
-                "Of Solomon Grundy.");
-
-        rapports.add(r1);
-        rapports.add(r2);
-        rapports.add(r3);
-
-
-        // *************************************************************************************************
-
+        rapports = findRapportsByUser(user.getId());
 
         rapportAdapter = new RapportAdapter(rapports);
 
@@ -220,6 +160,40 @@ public class RapportListActivity extends AppCompatActivity {
         Session.updateAttribute(rapportFlag, "rapportFlag");
         Dispacher.forward(RapportListActivity.this, CreerRapportActivity.class);
         alertDialog.dismiss();
+    }
+
+    private List<Rapport> findRapportsByUser(Long userId) {
+        final List<Rapport> res = new ArrayList<>();
+
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<List<Rapport>> call = apiInterface.getRapportsByUser(userId);
+
+        call.enqueue(new Callback<List<Rapport>>() {
+            @Override
+            public void onResponse(Call<List<Rapport>> call, Response<List<Rapport>> response) {
+                List<Rapport> rapports = response.body();
+                if (rapports == null) {
+                    Toast.makeText(RapportListActivity.this, "vous n\'avez aucun rapport", Toast.LENGTH_SHORT).show();
+                } else {
+                    for (Rapport rapport : rapports) {
+//                        Log.d("tag", rapport.toString());
+                        Log.d("tag", "PROJET ========= " + rapport.getProjet());
+                        Log.d("tag", "TACHE ========= " + rapport.getTache());
+                        Log.d("tag", "IMAGE ========= " + rapport.getImage());
+                        Log.d("tag", "USER ========= " + rapport.getUser());
+                        res.add(rapport);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Rapport>> call, Throwable t) {
+                t.printStackTrace();
+                Log.d("tag", t.toString());
+                Toast.makeText(RapportListActivity.this, "Echec , verifiez votre connexion !", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return res;
     }
 
 }

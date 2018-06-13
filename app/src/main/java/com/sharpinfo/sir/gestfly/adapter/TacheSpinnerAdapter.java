@@ -8,28 +8,29 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.sharpinfo.sir.gestfly.bean.Projet;
+import com.sharpinfo.sir.gestfly.bean.Tache;
 
 import java.util.List;
 
-public class ProjetSpinnerAdapter extends ArrayAdapter<Projet> {
+public class TacheSpinnerAdapter extends ArrayAdapter<Tache> {
 
     private Context context;
-    private final List<Projet> projets;
+    private final List<Tache> taches;
 
-    public ProjetSpinnerAdapter(Context context, int textViewResourceId, List<Projet> projets) {
-        super(context, textViewResourceId, projets);
+    public TacheSpinnerAdapter(Context context, int textViewResourceId, List<Tache> taches) {
+        super(context, textViewResourceId, taches);
         this.context = context;
-        this.projets = projets;
+        this.taches = taches;
     }
 
     @Override
     public int getCount() {
-        return projets.size();
+        return taches.size();
     }
 
     @Override
-    public Projet getItem(int position) {
-        return projets.get(position);
+    public Tache getItem(int position) {
+        return taches.get(position);
     }
 
     @Override
@@ -42,14 +43,14 @@ public class ProjetSpinnerAdapter extends ArrayAdapter<Projet> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // I created a dynamic TextView here, but you can reference your own  custom layout for each spinner item
-        TextView projet = (TextView) super.getView(position, convertView, parent);
-        projet.setTextColor(Color.BLACK);
+        TextView tache = (TextView) super.getView(position, convertView, parent);
+        tache.setTextColor(Color.BLACK);
         // Then you can get the current item using the values array (Users array) and the current position
         // You can NOW reference each method you has created in your bean object (User class)
-        projet.setText(projets.get(position).getNom());
+        tache.setText(taches.get(position).getNom());
 
         // And finally return your dynamic (or custom) view for each spinner item
-        return projet;
+        return tache;
     }
 
     @Override
@@ -62,11 +63,11 @@ public class ProjetSpinnerAdapter extends ArrayAdapter<Projet> {
     // Normally is the same view, but you can customize it if you want
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        TextView projet = (TextView) super.getDropDownView(position, convertView, parent);
-        projet.setTextSize(15f);
-        projet.setPadding(15,15,15,15);
-        projet.setTextColor(Color.BLACK);
-        projet.setText(projets.get(position).getNom());
-        return projet;
+        TextView tache = (TextView) super.getDropDownView(position, convertView, parent);
+        tache.setTextSize(15f);
+        tache.setPadding(15,15,15,15);
+        tache.setTextColor(Color.BLACK);
+        tache.setText(taches.get(position).getNom());
+        return tache;
     }
 }
