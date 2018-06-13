@@ -74,6 +74,14 @@ public interface ApiInterface {
             @Field("user_id") Long user_id
     );
 
+
+    /***Find User***/
+//    @GET("user/{id]")
+////    Call<User> findUser(@Path("id") Long id);
+//    Call<User> findUser(@Path("id") Long id);
+    @GET("user/{id}")
+    Call<User> findUser(@Path("id") Long id);
+
     /***FIND BY user**/
     @GET("projet/user/{id}")
     Call<List<Projet>> getProjetsByUser(@Path("id") Long id);
