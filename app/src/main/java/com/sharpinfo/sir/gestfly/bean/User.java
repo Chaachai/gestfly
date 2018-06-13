@@ -41,6 +41,7 @@ public class User implements Serializable {
     @SerializedName("JOB_ID")
     private Long job_id;
 
+
     public User() {
     }
 
@@ -74,6 +75,31 @@ public class User implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+
+    public Long getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(Long role_id) {
+        this.role_id = role_id;
+    }
+
+    public Long getCity_id() {
+        return city_id;
+    }
+
+    public void setCity_id(Long city_id) {
+        this.city_id = city_id;
+    }
+
+    public Long getJob_id() {
+        return job_id;
+    }
+
+    public void setJob_id(Long job_id) {
+        this.job_id = job_id;
     }
 
     public String getUsername() {
@@ -191,8 +217,8 @@ public class User implements Serializable {
     }
 
     public Ville getVille() {
-        if (ville == null)
-            ville = new Ville(city_id);
+        if(ville == null)
+        ville = new Ville(city_id);
         return ville;
     }
 
@@ -201,37 +227,13 @@ public class User implements Serializable {
     }
 
     public Job getJob() {
-        if (job == null)
-            job = new Job(job_id);
+        if(job == null)
+        job = new Job(job_id);
         return job;
     }
 
     public void setJob(Job job) {
         this.job = job;
-    }
-
-    public Long getRole_id() {
-        return role_id;
-    }
-
-    public void setRole_id(Long role_id) {
-        this.role_id = role_id;
-    }
-
-    public Long getCity_id() {
-        return city_id;
-    }
-
-    public void setCity_id(Long city_id) {
-        this.city_id = city_id;
-    }
-
-    public Long getJob_id() {
-        return job_id;
-    }
-
-    public void setJob_id(Long job_id) {
-        this.job_id = job_id;
     }
 
     @Override
@@ -251,7 +253,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -263,9 +265,11 @@ public class User implements Serializable {
                 ", image='" + image + '\'' +
                 ", blocked=" + blocked +
                 ", lastLogin=" + lastLogin +
-
                 ", passwordRequestedAt=" + passwordRequestedAt +
                 ", nbrConnection=" + nbrConnection +
+                ", role_id=" + role_id +
+                ", city_id=" + city_id +
+                ", job_id=" + job_id +
                 '}';
     }
 }

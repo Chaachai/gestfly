@@ -11,6 +11,10 @@ public class TypeEtat implements Serializable {
     public TypeEtat() {
     }
 
+    public TypeEtat(Long id) {
+        this.id = id;
+    }
+
     public TypeEtat(Long id, String libelle) {
         this.id = id;
         this.libelle = libelle;

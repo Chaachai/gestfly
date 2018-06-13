@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sharpinfo.sir.gestfly.R;
+import com.sharpinfo.sir.gestfly.action.projet.ProjetListActivity;
 import com.sharpinfo.sir.gestfly.adapter.TacheAdapter;
 import com.sharpinfo.sir.gestfly.bean.Tache;
 import com.sharpinfo.sir.gestfly.bean.User;
@@ -114,10 +115,10 @@ public class TacheListActivity extends AppCompatActivity {
     }
 
     private List<Tache> findTachesByUser(Long id) {
-        final List<Tache> res = new ArrayList();
+        final List<Tache> res = new ArrayList<>();
         Log.d(TAG, "executeApiCall");
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Log.d(TAG, "ID ===== "+id);
+        Log.d(TAG, "ID ===== " + id);
         retrofit2.Call<List<Tache>> call = apiInterface.getTachesByUser(id);
 
         call.enqueue(new Callback<List<Tache>>() {
@@ -126,6 +127,7 @@ public class TacheListActivity extends AppCompatActivity {
                 Log.d(TAG, "onresponse");
                 if (response.body() == null) {
                     Log.d(TAG, "RESPONSE NUUUULLLL !!!");
+                    Toast.makeText(TacheListActivity.this, "Aucune tache ne vous est affecté", Toast.LENGTH_SHORT).show();
                 } else if (response.body() != null) {
                     for (Tache tache : response.body()) {
                         res.add(tache);

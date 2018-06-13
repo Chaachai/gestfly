@@ -1,16 +1,27 @@
 package com.sharpinfo.sir.gestfly.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 public class Tache implements Serializable {
     private static final Long serialVersionUID = 1L;
+    @SerializedName("ID")
     private Long id;
+    @SerializedName("NOM")
     private String nom;
+    @SerializedName("DATEDEBUTREALISATION")
     private Date dateDebut;
+    @SerializedName("DATECREATION")
     private Date dateCreation;
+    @SerializedName("RAPPORT")
     private String description;
+    @SerializedName("PROJET_ID")
+    private Long projet_id;
+    @SerializedName("USER_ID")
+    private Long user_id;
     private Projet projet = new Projet();
     private User creator = new User();
 
@@ -25,6 +36,22 @@ public class Tache implements Serializable {
         this.description = description;
         projet.setId(projetId);
         creator.setId(creatorId);
+    }
+
+    public Long getProjet_id() {
+        return projet_id;
+    }
+
+    public void setProjet_id(Long projet_id) {
+        this.projet_id = projet_id;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     public Long getId() {
@@ -68,8 +95,8 @@ public class Tache implements Serializable {
     }
 
     public Projet getProjet() {
-        if(projet == null)
-            projet = new Projet();
+        if (projet == null)
+        projet = new Projet(projet_id);
         return projet;
     }
 
@@ -79,7 +106,7 @@ public class Tache implements Serializable {
 
     public User getCreator() {
         if(creator == null)
-            creator = new User();
+        creator = new User(user_id);
         return creator;
     }
 
@@ -102,14 +129,15 @@ public class Tache implements Serializable {
     }
 
     @Override
-    public String
-    toString() {
+    public String toString() {
         return "Tache{" +
                 "id=" + id +
-                ", titre='" + nom + '\'' +
+                ", nom='" + nom + '\'' +
                 ", dateDebut=" + dateDebut +
                 ", dateCreation=" + dateCreation +
-                ", textView1='" + description + '\'' +
+                ", description='" + description + '\'' +
+                ", projet_id=" + projet_id +
+                ", user_id=" + user_id +
                 '}';
     }
 }

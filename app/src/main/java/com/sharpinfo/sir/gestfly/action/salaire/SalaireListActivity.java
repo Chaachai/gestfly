@@ -4,31 +4,39 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.sharpinfo.sir.gestfly.R;
+import com.sharpinfo.sir.gestfly.action.conge.CongeListActivity;
 import com.sharpinfo.sir.gestfly.adapter.SalaireAdapter;
-import com.sharpinfo.sir.gestfly.bean.Conge;
 import com.sharpinfo.sir.gestfly.bean.DemandeSalaire;
 import com.sharpinfo.sir.gestfly.bean.TypeDemandeSalaire;
-import com.sharpinfo.sir.gestfly.bean.TypeEtatConge;
+import com.sharpinfo.sir.gestfly.bean.TypeEtatDemande;
 import com.sharpinfo.sir.gestfly.helper.Dispacher;
 import com.sharpinfo.sir.gestfly.helper.SimpleDividerItemDecoration;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClient;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiInterface;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class SalaireListActivity extends AppCompatActivity {
+    public static final String TAG = "SalaireListActivity";
+
 
     private Context mContext = this;
     RecyclerView salaireRecyclerView;
@@ -46,9 +54,9 @@ public class SalaireListActivity extends AppCompatActivity {
 
         // *************************************************************************************************
 
-        TypeEtatConge t1 = new TypeEtatConge();
-        TypeEtatConge t2 = new TypeEtatConge();
-        TypeEtatConge t3 = new TypeEtatConge();
+        TypeEtatDemande t1 = new TypeEtatDemande();
+        TypeEtatDemande t2 = new TypeEtatDemande();
+        TypeEtatDemande t3 = new TypeEtatDemande();
 
         t1.setLibelle("Accepté");
         t2.setLibelle("Refusé");
@@ -73,11 +81,11 @@ public class SalaireListActivity extends AppCompatActivity {
 
         d2.setEtat(t2);
         d2.setType(ts2);
-        d2.setMontantAjouter(5000.0);
+        d2.setMontantAjouter(new BigDecimal(5000.0));
 
         d3.setEtat(t1);
         d3.setType(ts2);
-        d3.setMontantAjouter(2000.0);
+        d3.setMontantAjouter(new BigDecimal(2000.0));
 
         d4.setEtat(t3);
         d4.setType(ts1);
@@ -85,7 +93,7 @@ public class SalaireListActivity extends AppCompatActivity {
 
         d5.setEtat(t3);
         d5.setType(ts2);
-        d5.setMontantAjouter(2500.0);
+        d5.setMontantAjouter(new BigDecimal(2500.0));
 
         salaires.add(d1);
         salaires.add(d2);
@@ -111,7 +119,7 @@ public class SalaireListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salaire_list);
-        Toolbar toolbar =  findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         ActionBar ab = getSupportActionBar();
@@ -145,6 +153,35 @@ public class SalaireListActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+    }
+
+    private List<TypeEtatDemande> getAllTypeEtatDemande() {
+        final List<TypeEtatDemande> typeEtatDemandes = new ArrayList<>();
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<List<TypeEtatDemande>> call = apiInterface.getAllTypeEtatDemandes();
+        call.enqueue(new Callback<List<TypeEtatDemande>>() {
+            @Override
+            public void onResponse(Call<List<TypeEtatDemande>> call, Response<List<TypeEtatDemande>> response) {
+                Log.d(TAG, "Onresponse");
+                List<TypeEtatDemande> types = response.body();
+                if (types == null) {
+                    Toast.makeText(SalaireListActivity.this, "Il y'a eu une erreur dans le serveur , veuillez contacter un administrateur ", Toast.LENGTH_SHORT).show();
+                } else {
+                    typeEtatDemandes.addAll(types);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<TypeEtatDemande>> call, Throwable t) {
+                Log.d(TAG, "OnFailure");
+                t.printStackTrace();
+                Log.d(TAG, t.toString());
+                Toast.makeText(SalaireListActivity.this, "Echec , verifiez votre connexion !", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        return typeEtatDemandes;
     }
 
     public void goToDemandeAvance(View view) {

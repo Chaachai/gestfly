@@ -1,5 +1,7 @@
 package com.sharpinfo.sir.gestfly.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -7,12 +9,21 @@ import java.util.Objects;
 
 public class Projet implements Serializable {
     private static final Long serialVersionUID = 1L;
+    @SerializedName("ID")
     private Long id;
+    @SerializedName("NOM")
     private String nom;
-    private String description;
+    //private String description;
+    @SerializedName("DATEDEBUTREALISATION")
     private Date dateDebut;
+    @SerializedName("DATECREATION")
     private Date dateCreation;
+
     private BigDecimal budget;
+    @SerializedName("USER_ID")
+    private Long user_id;
+    @SerializedName("ETAT_ID")
+    private Long etat_id;
     private User creator = new User();
     private TypeEtat etat = new TypeEtat();
 
@@ -28,10 +39,9 @@ public class Projet implements Serializable {
         this.nom = nom;
     }
 
-    public Projet(Long id, String nom, String description, Date dateDebut, Date dateCreation, BigDecimal budget, Long creatorId, Long etatId) {
+    public Projet(Long id, String nom, Date dateDebut, Date dateCreation, BigDecimal budget, Long creatorId, Long etatId) {
         this.id = id;
         this.nom = nom;
-        this.description = description;
         this.dateDebut = dateDebut;
         this.dateCreation = dateCreation;
         this.budget = budget;
@@ -39,8 +49,24 @@ public class Projet implements Serializable {
         etat.setId(etatId);
     }
 
+    public Long getEtat_id() {
+        return etat_id;
+    }
+
+    public void setEtat_id(Long etat_id) {
+        this.etat_id = etat_id;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     public void setId(Long id) {
@@ -55,13 +81,6 @@ public class Projet implements Serializable {
         this.nom = nom;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public Date getDateDebut() {
         return dateDebut;
@@ -88,8 +107,8 @@ public class Projet implements Serializable {
     }
 
     public User getCreator() {
-        if (creator == null)
-            creator = new User();
+        if(creator == null)
+        creator = new User(user_id);
         return creator;
     }
 
@@ -98,8 +117,8 @@ public class Projet implements Serializable {
     }
 
     public TypeEtat getEtat() {
-        if (etat == null)
-            etat = new TypeEtat();
+        if(etat == null)
+        etat = new TypeEtat(etat_id);
         return etat;
     }
 
@@ -125,11 +144,12 @@ public class Projet implements Serializable {
     public String toString() {
         return "Projet{" +
                 "id=" + id +
-                ", titre='" + nom + '\'' +
-                ", textView1='" + description + '\'' +
+                ", nom='" + nom + '\'' +
                 ", dateDebut=" + dateDebut +
                 ", dateCreation=" + dateCreation +
                 ", budget=" + budget +
+                ", user_id=" + user_id +
+                ", etat_id=" + etat_id +
                 '}';
     }
 }
