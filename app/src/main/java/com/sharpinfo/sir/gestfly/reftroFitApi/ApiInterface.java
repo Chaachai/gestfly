@@ -88,13 +88,22 @@ public interface ApiInterface {
     );
 
 
-
     /***Find User***/
 //    @GET("user/{id]")
 ////    Call<User> findUser(@Path("id") Long id);
 //    Call<User> findUser(@Path("id") Long id);
     @GET("user/{id}")
     Call<User> findUser(@Path("id") Long id);
+
+    /***Find ProjetBy ID***/
+    @GET("projet/{id}")
+    Call<Projet> findProjet(@Path("id") Long id);
+
+    /***Find TacheBy ID***/
+    @GET("tache/{id}")
+    Call<Tache> findTache(@Path("id") Long id);
+
+
 
     /***FIND BY user**/
     @GET("projet/user/{id}")

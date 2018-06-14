@@ -12,14 +12,23 @@ import android.widget.TextView;
 
 import com.sharpinfo.sir.gestfly.R;
 import com.sharpinfo.sir.gestfly.action.rapport.RapportContentActivity;
+import com.sharpinfo.sir.gestfly.bean.Projet;
 import com.sharpinfo.sir.gestfly.bean.Rapport;
+import com.sharpinfo.sir.gestfly.bean.Tache;
+import com.sharpinfo.sir.gestfly.bean.User;
 import com.sharpinfo.sir.gestfly.helper.Dispacher;
 import com.sharpinfo.sir.gestfly.helper.Session;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClient;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiInterface;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RapportAdapter extends RecyclerView.Adapter<RapportAdapter.ViewHolder> {
     private List<Rapport> mRapports;
@@ -72,31 +81,86 @@ public class RapportAdapter extends RecyclerView.Adapter<RapportAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        Rapport rapport = mRapports.get(position);
+        final Rapport rapport = mRapports.get(position);
 
-        TextView titreTextView = viewHolder.titre;
-        TextView firstTextView = viewHolder.textView1;
-        TextView dateTextView = viewHolder.dateRapport;
+        final TextView titreTextView = viewHolder.titre;
+        final TextView firstTextView = viewHolder.textView1;
+        final TextView dateTextView = viewHolder.dateRapport;
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-        String dateString = dateFormat.format(rapport.getDate());
+        final String dateString = dateFormat.format(rapport.getDate());
 
-        titreTextView.setText(rapport.getTitre());
-        dateTextView.setText(dateString);
+        if (rapport.getUser_id() != null) {
+            ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+            Call<User> call = apiInterface.findUser(rapport.getUser_id());
+            call.enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    if (response.body() != null) {
+                        User user = response.body();
+                        rapport.setUser(user);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
+
+                }
+            });
+        }
+
 
 //        Log.d("tag", "Projet ====== " + rapport.getProjet());
 //        Log.d("tag", "Tache ====== " + rapport.getTache());
 
+        if (rapport.getProjet_id() == null && rapport.getTache_id() != null) {
+            ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+            Call<Tache> call = apiInterface.findTache(rapport.getTache_id());
+            call.enqueue(new Callback<Tache>() {
+                @Override
+                public void onResponse(Call<Tache> call, Response<Tache> response) {
+                    Log.d("rapportAdapter", "knqlbo ela tache");
+                    if (response.body() != null) {
+                        titreTextView.setText(rapport.getTitre());
+                        dateTextView.setText(dateString);
+                        Tache tache = response.body();
+                        rapport.setTache(tache);
+                        firstTextView.setText(rapport.getTache().getNom());
 
-        if (rapport.getProjet().getNom() != null && rapport.getTache().getNom() == null) {
-            firstTextView.setText(rapport.getProjet().getNom());
-        } else if (rapport.getTache().getNom() != null && rapport.getProjet().getNom() == null) {
-            firstTextView.setText(rapport.getTache().getNom());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Tache> call, Throwable t) {
+
+                }
+            });
         } else {
-            firstTextView.setText("");
+            ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+            Call<Projet> call = apiInterface.findProjet(rapport.getProjet_id());
+            call.enqueue(new Callback<Projet>() {
+                @Override
+                public void onResponse(Call<Projet> call, Response<Projet> response) {
+                    Log.d("rapportAdapter", "knqlbo ela projet");
+                    if (response.body() != null) {
+                        titreTextView.setText(rapport.getTitre());
+                        dateTextView.setText(dateString);
+                        Projet projet = response.body();
+                        rapport.setProjet(projet);
+                        firstTextView.setText(rapport.getProjet().getNom());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Projet> call, Throwable t) {
+
+                }
+            });
         }
 
+
     }
+
 
     public void setfilter(List<Rapport> filteredRapport) {
         mRapports = new ArrayList<>();
