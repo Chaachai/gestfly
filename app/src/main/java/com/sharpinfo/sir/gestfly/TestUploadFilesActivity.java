@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.sharpinfo.sir.gestfly.bean.User;
+import com.sharpinfo.sir.gestfly.helper.Session;
 import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClientForImage;
 import com.sharpinfo.sir.gestfly.reftroFitApi.ApiInterface;
 
@@ -53,7 +55,7 @@ public class TestUploadFilesActivity extends AppCompatActivity implements View.O
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.uploadBn:
-                uploadImage();
+//                uploadImage();
                 break;
             case R.id.chooseBn:
                 selectImage();
@@ -61,36 +63,36 @@ public class TestUploadFilesActivity extends AppCompatActivity implements View.O
         }
     }
 
-    private void uploadImage() {
-        String Image = imageToString();
-        Random r = new Random();
-        int i1 = r.nextInt(35789 - 15987) + 35789;
-        long time= System.currentTimeMillis();
-        String Title = "Img_"+time+"_"+i1;
-        ApiInterface apiInterface = ApiClientForImage.getApiClient().create(ApiInterface.class);
-        Call<com.sharpinfo.sir.gestfly.bean.Image> call = apiInterface.uploadImage(Title, Image);
-
-        call.enqueue(new Callback<com.sharpinfo.sir.gestfly.bean.Image>() {
-            @SuppressLint("ShowToast")
-            @Override
-            public void onResponse(Call<com.sharpinfo.sir.gestfly.bean.Image> call, Response<com.sharpinfo.sir.gestfly.bean.Image> response) {
-                com.sharpinfo.sir.gestfly.bean.Image image = response.body();
-                Toast.makeText(TestUploadFilesActivity.this, "Server Response : " + image.getResponse(), Toast.LENGTH_LONG).show();
-                Log.d("tag", "SERVER RESPOOOOOOOONSE = "+ image.getResponse());
-                Img.setVisibility(View.GONE);
-                Img_title.setVisibility(View.GONE);
-                BnChoose.setEnabled(true);
-                BnUpload.setEnabled(false);
-                Img_title.setText("");
-
-            }
-
-            @Override
-            public void onFailure(Call<com.sharpinfo.sir.gestfly.bean.Image> call, Throwable t) {
-                Log.d("tag", "FUCK OOOOOOOOFFFF");
-            }
-        });
-    }
+//    private void uploadImage() {
+//        String Image = imageToString();
+//        Random r = new Random();
+//        int i1 = r.nextInt(35789 - 15987) + 35789;
+//        long time= System.currentTimeMillis();
+//        String Title = "Img_"+time+"_"+i1;
+//        ApiInterface apiInterface = ApiClientForImage.getApiClient().create(ApiInterface.class);
+//        Call<com.sharpinfo.sir.gestfly.bean.Image> call = apiInterface.uploadImage(Title, Image);
+//
+//        call.enqueue(new Callback<com.sharpinfo.sir.gestfly.bean.Image>() {
+//            @SuppressLint("ShowToast")
+//            @Override
+//            public void onResponse(Call<com.sharpinfo.sir.gestfly.bean.Image> call, Response<com.sharpinfo.sir.gestfly.bean.Image> response) {
+//                com.sharpinfo.sir.gestfly.bean.Image image = response.body();
+//                Toast.makeText(TestUploadFilesActivity.this, "Server Response : " + image.getResponse(), Toast.LENGTH_LONG).show();
+//                Log.d("tag", "SERVER RESPOOOOOOOONSE = "+ image.getResponse());
+//                Img.setVisibility(View.GONE);
+//                Img_title.setVisibility(View.GONE);
+//                BnChoose.setEnabled(true);
+//                BnUpload.setEnabled(false);
+//                Img_title.setText("");
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<com.sharpinfo.sir.gestfly.bean.Image> call, Throwable t) {
+//                Log.d("tag", "FUCK OOOOOOOOFFFF");
+//            }
+//        });
+//    }
 
     private void selectImage() {
         Intent intent = new Intent();

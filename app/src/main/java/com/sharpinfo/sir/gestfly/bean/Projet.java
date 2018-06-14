@@ -30,8 +30,15 @@ public class Projet implements Serializable {
     public Projet() {
     }
 
+
+
     public Projet(Long id) {
         this.id = id;
+    }
+
+    public Projet(Long id, String nom) {
+        this.id = id;
+        this.nom = nom;
     }
 
     public Projet(Long id, String nom, Date dateDebut, Date dateCreation, BigDecimal budget, Long creatorId, Long etatId) {

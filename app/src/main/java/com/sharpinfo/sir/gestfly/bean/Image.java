@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Image {
 
+    @SerializedName("ID")
+    private int id;
+
     @SerializedName("title")
     private String Title;
 
@@ -15,5 +18,21 @@ public class Image {
 
     public String getResponse() {
         return Response;
+    }
+
+    public Image() {
+    }
+
+    public Image(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "id=" + id +
+                ", Title='" + Title + '\'' +
+                ", Image='" + Image + '\'' +
+                '}';
     }
 }

@@ -8,6 +8,14 @@
         android:title="@string/action_settings">
         <menu>
             <item
+                android:id="@+id/start_day_option"
+                android:title="@string/commencer_la_journee"
+                android:icon="@drawable/ic_play_circle_filled_black_24dp"/>
+            <item
+                android:id="@+id/end_day_option"
+                android:title="@string/finir_la_journee"
+                android:icon="@drawable/ic_stop_black_24dp"/>
+            <item
                 android:id="@+id/profile_option"
                 android:title="@string/profile"
                 android:icon="@drawable/ic_person_black_24dp"/>

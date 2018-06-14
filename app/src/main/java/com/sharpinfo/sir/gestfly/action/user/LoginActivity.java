@@ -121,6 +121,8 @@ public class LoginActivity extends AppCompatActivity {
 //                            Toast.LENGTH_SHORT).show();
                     Log.d("tag", "USER ======= " + response.body());
                     Session.setAttribute(response.body(), "connectedUser");
+                    Integer flag = 0;
+                    Session.setAttribute(flag, "flag");
                     Dispacher.forward(LoginActivity.this, MenuTechnicienActivity.class);
                     finish();
                 }

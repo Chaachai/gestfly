@@ -4,6 +4,7 @@ import com.sharpinfo.sir.gestfly.bean.Conge;
 import com.sharpinfo.sir.gestfly.bean.DemandeSalaire;
 import com.sharpinfo.sir.gestfly.bean.Image;
 import com.sharpinfo.sir.gestfly.bean.Projet;
+import com.sharpinfo.sir.gestfly.bean.Rapport;
 import com.sharpinfo.sir.gestfly.bean.Tache;
 import com.sharpinfo.sir.gestfly.bean.TypeDemandeSalaire;
 import com.sharpinfo.sir.gestfly.bean.TypeEtatDemande;
@@ -34,7 +35,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("upload.php")
-    Call<Image> uploadImage(@Field("title") String title, @Field("image") String image);
+    Call<Integer> uploadImage(@Field("title") String title, @Field("image") String image);
 
     /**** find ALL***/
     @GET("projets")
@@ -74,6 +75,19 @@ public interface ApiInterface {
             @Field("user_id") Long user_id
     );
 
+    @POST("rapport")
+    @FormUrlEncoded
+    Call<Integer> createRapport(
+            @Field("date") String date,
+            @Field("projet_id") Long projet_id,
+            @Field("text") String text,
+            @Field("title") String title,
+            @Field("tache_id") Long tache_id,
+            @Field("user_id") Long user_id,
+            @Field("image_id") Integer image_id
+    );
+
+
 
     /***Find User***/
 //    @GET("user/{id]")
@@ -85,6 +99,9 @@ public interface ApiInterface {
     /***FIND BY user**/
     @GET("projet/user/{id}")
     Call<List<Projet>> getProjetsByUser(@Path("id") Long id);
+
+    @GET("rapport/user/{id}")
+    Call<List<Rapport>> getRapportsByUser(@Path("id") Long id);
 
     @GET("tache/user/{id}")
     Call<List<Tache>> getTachesByUser(@Path("id") Long id);

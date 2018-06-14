@@ -7,4 +7,109 @@
     android:background="@drawable/gray_background"
     tools:context=".action.rapport.CreerRapportActivity">
 
+    <Spinner
+        android:id="@+id/spinner_projet_tache"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/edit_text_style"
+        app:layout_constraintBottom_toTopOf="@+id/titr_rapport_create"
+        app:layout_constraintEnd_toEndOf="@+id/titr_rapport_create"
+        app:layout_constraintStart_toStartOf="@+id/titr_rapport_create" />
+
+    <EditText
+        android:id="@+id/titr_rapport_create"
+        android:layout_width="320dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/edit_text_style"
+        android:ems="10"
+        android:hint="@string/titre_du_rapport"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/text_rapport_create"
+        app:layout_constraintEnd_toEndOf="@+id/text_rapport_create"
+        app:layout_constraintStart_toStartOf="@+id/text_rapport_create" />
+
+    <Button
+        android:id="@+id/envoyer_rapport"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="88dp"
+        android:background="@drawable/round_green_button"
+        android:text="Envoyer"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/image_rapport"
+        app:layout_constraintTop_toBottomOf="@+id/text_rapport_create" />
+
+    <EditText
+        android:id="@+id/text_rapport_create"
+        android:layout_width="321dp"
+        android:layout_height="206dp"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edit_text_style"
+        android:ellipsize="start"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="29dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_projet_tache"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_projet_tache"
+        app:layout_constraintTop_toTopOf="@+id/spinner_projet_tache"
+        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/image_rapport"
+        android:layout_width="99dp"
+        android:layout_height="95dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/todo"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/upload_image_rapport"
+        app:layout_constraintStart_toStartOf="@+id/upload_image_rapport"
+        app:layout_constraintTop_toBottomOf="@+id/upload_image_rapport" />
+
+    <Button
+        android:id="@+id/upload_image_rapport"
+        android:layout_width="94dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_blue_button"
+        android:drawableLeft="@drawable/ic_attach_file_black_24dp"
+        android:text="Image"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/text_rapport_create"
+        app:layout_constraintTop_toBottomOf="@+id/text_rapport_create" />
+
+    <TextView
+        android:id="@+id/spinner_label_rapport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choisissez un projet :"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_projet_tache"
+        app:layout_constraintStart_toStartOf="@+id/spinner_projet_tache" />
+
 </android.support.constraint.ConstraintLayout>

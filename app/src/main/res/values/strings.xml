@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GestFly</string>
     <string name="action_settings">Paramètres</string>
-    <string name="title_activity_projet_list">Liste des projets</string>
+    <string name="title_activity_projet_list">Liste des taches</string>
     <string name="search">Recherche</string>
     <string name="welcome">Bienvenue à GestFly</string>
     <string name="connexion">S\'AUTHENTIFIER</string>
@@ -14,7 +14,7 @@
     <string name="todo">TODO</string>
     <string name="hello">Hello</string>
     <string name="mes_projets">Mes Projets</string>
-    <string name="consulter_mes_projets">Consulter mes projets</string>
+    <string name="consulter_mes_projets">Consulter mes taches</string>
     <string name="mes_taches">Mes Tâches</string>
     <string name="consulter_mes_taches">Consulter mes tâches</string>
     <string name="mon_conge">Mon Congé</string>
@@ -82,6 +82,11 @@
     <string name="mois_1_12">Mois (1-12)</string>
     <string name="dash">/</string>
     <string name="_2019">2019</string>
+    <string name="commencer_la_journee">Commencer la journée</string>
+    <string name="finir_la_journee">Finir la journée</string>
+    <string name="plus_tard">Plus tard</string>
+    <string name="declarer">Déclarer</string>
+    <string name="declare_your_day_text">Veuillez déclarer le début de votre journée.</string>
 
 
 </resources>
