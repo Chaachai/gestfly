@@ -75,6 +75,7 @@ public interface ApiInterface {
             @Field("user_id") Long user_id
     );
 
+    //Insert rapport
     @POST("rapport")
     @FormUrlEncoded
     Call<Integer> createRapport(
@@ -85,6 +86,31 @@ public interface ApiInterface {
             @Field("tache_id") Long tache_id,
             @Field("user_id") Long user_id,
             @Field("image_id") Integer image_id
+    );
+
+    //Insert journee
+    @POST("journee")
+    @FormUrlEncoded
+    Call<Integer> createJournee(
+            @Field("date_debut") String date_debut,
+            @Field("date_fin") String date_fin,
+            @Field("temps_debut") Long temps_debut,
+            @Field("temps_fin") Long temps_fin,
+            @Field("duree") Long duree,
+            @Field("user_id") Long user_id
+    );
+
+    //Insert travail_projet
+    @POST("travailprojet")
+    @FormUrlEncoded
+    Call<Integer> createTravailProjet(
+            @Field("date_debut") String date_debut,
+            @Field("date_fin") String date_fin,
+            @Field("temps_debut") Long temps_debut,
+            @Field("temps_fin") Long temps_fin,
+            @Field("duree") Long duree,
+            @Field("user_id") Long user_id,
+            @Field("projet_id") Long projet_id
     );
 
 

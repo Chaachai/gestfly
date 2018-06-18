@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GestFly</string>
     <string name="action_settings">Paramètres</string>
-    <string name="title_activity_projet_list">Liste des taches</string>
+    <string name="title_activity_projet_list">Liste des projets</string>
     <string name="search">Recherche</string>
     <string name="welcome">Bienvenue à GestFly</string>
     <string name="connexion">S\'AUTHENTIFIER</string>

@@ -65,21 +65,20 @@
         <activity
             android:name=".action.rapport.RapportContentActivity"
             android:label="Mes rapports"
-            android:parentActivityName=".action.rapport.RapportListActivity">
-
-        </activity>
+            android:parentActivityName=".action.rapport.RapportListActivity" />
         <activity
             android:name=".action.rapport.CreerRapportActivity"
             android:label="Réaliser un rapport"
-            android:parentActivityName=".action.rapport.RapportListActivity">
-
-        </activity>
+            android:parentActivityName=".action.rapport.RapportListActivity" />
         <activity
             android:name=".action.conge.CreateCongeActivity"
             android:label="Demander un congé"
-            android:parentActivityName=".action.conge.CongeListActivity">
-
-        </activity>
+            android:parentActivityName=".action.conge.CongeListActivity" />
+        <activity
+            android:name=".action.projet.ProjetContentActivity"
+            android:label="Projet"
+            android:parentActivityName=".action.projet.ProjetListActivity"></activity>
+        <activity android:name=".action.menu.MenuIngenieurActivity"></activity>
     </application>
 
 </manifest>

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -43,8 +44,8 @@ public class ProjetListActivity extends AppCompatActivity {
     RecyclerView projetRecyclerView;
     SearchView searchView;
     ProjetAdapter projetAdapter;
-
     List<Projet> projets;
+
 
     private void injecterGUI() {
         projetRecyclerView = findViewById(R.id.projetRecyclerView);
@@ -73,6 +74,10 @@ public class ProjetListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_projet_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        Integer flagProjet = 0;
+        Session.setAttribute(flagProjet, "flagProjet");
 
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);

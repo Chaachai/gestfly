@@ -17,16 +17,25 @@ import android.widget.Toast;
 import com.sharpinfo.sir.gestfly.R;
 import com.sharpinfo.sir.gestfly.action.conge.CongeListActivity;
 import com.sharpinfo.sir.gestfly.action.projet.ProjetListActivity;
+import com.sharpinfo.sir.gestfly.action.rapport.CreerRapportActivity;
 import com.sharpinfo.sir.gestfly.action.rapport.RapportListActivity;
 import com.sharpinfo.sir.gestfly.action.salaire.SalaireListActivity;
 import com.sharpinfo.sir.gestfly.action.tache.TacheListActivity;
 import com.sharpinfo.sir.gestfly.action.user.LoginActivity;
+import com.sharpinfo.sir.gestfly.bean.User;
 import com.sharpinfo.sir.gestfly.helper.Dispacher;
 import com.sharpinfo.sir.gestfly.helper.Session;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClient;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiInterface;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MenuTechnicienActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -41,8 +50,11 @@ public class MenuTechnicienActivity extends AppCompatActivity implements View.On
     AlertDialog alertDialog;
     Integer flagStart = 1;
     Integer flagEnd = 0;
+    Integer flagProjet = 0;
     long startingTime;
+    Date startingDate;
     long endingTime;
+    Date endingDate;
     long totalTime;
 
     @Override
@@ -61,6 +73,8 @@ public class MenuTechnicienActivity extends AppCompatActivity implements View.On
         congeCard.setOnClickListener(this);
         salaireCard.setOnClickListener(this);
         rapportCard.setOnClickListener(this);
+
+        Session.setAttribute(flagProjet, "flagProjet");
 
         Integer flag = (Integer) Session.getAttribut("flag");
         if (flag == 0) {
@@ -171,22 +185,60 @@ public class MenuTechnicienActivity extends AppCompatActivity implements View.On
         Toast.makeText(MenuTechnicienActivity.this, "votre journée a bien commencée",
                 Toast.LENGTH_LONG).show();
         startingTime = System.currentTimeMillis();
+        startingDate = new Date();
         Session.setAttribute(startingTime, "startTime");
+        Session.setAttribute(startingDate, "startDate");
     }
 
     public void endDay() {
         Session.updateAttribute(flagEnd, "flag");
+        User user = (User) Session.getAttribut("connectedUser");
+
         endingTime = System.currentTimeMillis();
+        endingDate = new Date();
+
         Long sTime = (Long) Session.getAttribut("startTime");
+        Date sDate = (Date) Session.getAttribut("startDate");
+
         totalTime = endingTime - sTime;
+
         int hours = (int) (totalTime / (1000 * 60 * 60));
         int mins = (int) ((totalTime / (1000 * 60)) % 60);
         long secs = (int) (totalTime / 1000) % 60;
+
         Log.d("tag", "Total dyal lwa9t hwa ======== " + hours + " hours " + mins + " minutes " + secs + " seconds");
+
         Session.delete("startTime");
+        Session.delete("startDate");
+
         Toast.makeText(MenuTechnicienActivity.this, "Vous avez passé " + hours + " Heurs, " + mins + " minutes et " + secs + " seconds",
                 Toast.LENGTH_LONG).show();
-        Log.d("tag", "CurrentTimeMillies ===================== " + System.currentTimeMillis());
+
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String dateStartString = dateFormat.format(sDate);
+        String dateEndString = dateFormat.format(endingDate);
+
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<Integer> call = apiInterface.createJournee(dateStartString, dateEndString, sTime, endingTime, totalTime, user.getId());
+        call.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if (response.body() == 1) {
+                    Log.d("tag", "journee cree avec succes");
+                } else {
+                    Log.d("tag", "Une erreur est survenu lors de la creation");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Toast.makeText(MenuTechnicienActivity.this, "Verifiez votre connexion !",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
+
 
 }

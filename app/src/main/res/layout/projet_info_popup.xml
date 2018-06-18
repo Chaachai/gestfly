@@ -35,24 +35,24 @@
         android:layout_width="163dp"
         android:layout_height="28dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="Chef du projet:"
         android:textColor="@color/black"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
         app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/etat_projet_info_popup" />
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
 
     <TextView
         android:id="@+id/etat_projet_info_popup"
         android:layout_width="163dp"
         android:layout_height="28dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
         android:text="Etat du projet:"
         android:textColor="@color/black"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView29"
         app:layout_constraintStart_toEndOf="@+id/textView29"
-        app:layout_constraintTop_toBottomOf="@+id/dateRealisation_projet_info_popup" />
+        app:layout_constraintTop_toTopOf="@+id/textView29" />
 
     <TextView
         android:id="@+id/textView29"
@@ -83,24 +83,24 @@
         android:layout_width="163dp"
         android:layout_height="31dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
         android:text="Date de Realisation"
         android:textColor="@color/black"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView22"
         app:layout_constraintStart_toEndOf="@+id/textView22"
-        app:layout_constraintTop_toBottomOf="@+id/dateCreation_projet_info_popup" />
+        app:layout_constraintTop_toTopOf="@+id/textView22" />
 
     <TextView
         android:id="@+id/dateCreation_projet_info_popup"
         android:layout_width="143dp"
         android:layout_height="31dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="Date de creation:"
         android:textColor="@color/black"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView27"
         app:layout_constraintStart_toEndOf="@+id/textView27"
-        app:layout_constraintTop_toBottomOf="@+id/nom_projet_info_popup" />
+        app:layout_constraintTop_toTopOf="@+id/textView27" />
 
     <TextView
         android:id="@+id/textView27"
@@ -119,12 +119,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
         android:text="Nom du projet"
         android:textColor="@color/black"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView26"
         app:layout_constraintStart_toEndOf="@+id/textView26"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/textView26" />
 
     <TextView
         android:id="@+id/textView26"
@@ -142,11 +142,16 @@
         android:id="@+id/btn_start_projet_info_popup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginStart="65dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/round_green_button"
-        android:text="Commencer Projet"
+        android:drawableLeft="@drawable/ic_play_arrow_white_24dp"
+        android:text="Commencer le travail"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -155,16 +160,19 @@
         android:id="@+id/btn_finish_projet_info_popup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginStart="85dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/round_green_button"
-        android:text="Finir Projet"
+        android:drawableLeft="@drawable/ic_stop_white_24dp"
+        android:text="Finir le travail"
+        android:textColor="@color/white"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_start_projet_info_popup" />
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
 
 </android.support.constraint.ConstraintLayout>
