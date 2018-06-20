@@ -142,6 +142,7 @@ public class SalaireListActivity extends AppCompatActivity {
                         Log.d(TAG, demandeSalaire.toString());
                         res.add(demandeSalaire);
                     }
+                    salaireAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -213,6 +214,7 @@ public class SalaireListActivity extends AppCompatActivity {
                 } else {
                     typeEtatDemandes.addAll(types);
                 }
+                salaireAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -242,6 +244,7 @@ public class SalaireListActivity extends AppCompatActivity {
                 } else {
                     typeDemandeSalaires.addAll(types);
                 }
+                salaireAdapter.notifyDataSetChanged();
             }
 
             @Override

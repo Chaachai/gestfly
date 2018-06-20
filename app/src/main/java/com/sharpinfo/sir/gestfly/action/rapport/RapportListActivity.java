@@ -183,6 +183,7 @@ public class RapportListActivity extends AppCompatActivity {
                         Log.d("tag", "USER ========= " + rapport.getUser());
                         res.add(rapport);
                     }
+                    rapportAdapter.notifyDataSetChanged();
                 }
             }
 

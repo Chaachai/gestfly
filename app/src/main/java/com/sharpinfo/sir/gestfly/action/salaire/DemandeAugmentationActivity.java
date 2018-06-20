@@ -77,7 +77,7 @@ public class DemandeAugmentationActivity extends AppCompatActivity {
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if (response.body() == 1) {
                     Toast.makeText(DemandeAugmentationActivity.this, "Demande Augmentation salaire cree avec succes", Toast.LENGTH_SHORT).show();
-                    Dispacher.forward(DemandeAugmentationActivity.this, MenuTechnicienActivity.class);
+                    Dispacher.forward(DemandeAugmentationActivity.this, SalaireListActivity.class);
                     finish();
                 } else {
                     Toast.makeText(DemandeAugmentationActivity.this, "Une erreur est survenu lors de la creation", Toast.LENGTH_SHORT).show();

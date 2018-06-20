@@ -63,7 +63,7 @@ public class DemandeAvanceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (String.valueOf(moisAvance.getText()).equals("")) {
                     Toast.makeText(DemandeAvanceActivity.this, "Veuillez saisir un mois", Toast.LENGTH_SHORT).show();
-                } else if (Integer.valueOf(String.valueOf(moisAvance.getText())) > 12) {
+                } else if (Integer.valueOf(String.valueOf(moisAvance.getText())) > 12 ||Integer.valueOf(String.valueOf(moisAvance.getText())) == 12) {
                     Toast.makeText(DemandeAvanceActivity.this, "Veuillez saisir une valeur correcte", Toast.LENGTH_SHORT).show();
                 } else {
                     executeApiCall(Integer.valueOf(String.valueOf(moisAvance.getText())), String.valueOf(messageAvance.getText()));
@@ -86,7 +86,7 @@ public class DemandeAvanceActivity extends AppCompatActivity {
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if (response.body() == 1) {
                     Toast.makeText(DemandeAvanceActivity.this, "Demande Avance salaire cree avec succes", Toast.LENGTH_SHORT).show();
-                    Dispacher.forward(DemandeAvanceActivity.this, MenuTechnicienActivity.class);
+                    Dispacher.forward(DemandeAvanceActivity.this, SalaireListActivity.class);
                     finish();
                 } else {
                     Toast.makeText(DemandeAvanceActivity.this, "Une erreur est survenu lors de la creation", Toast.LENGTH_SHORT).show();

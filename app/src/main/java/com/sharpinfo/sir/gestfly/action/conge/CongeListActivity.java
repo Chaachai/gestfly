@@ -86,6 +86,7 @@ public class CongeListActivity extends AppCompatActivity {
                         Log.d(TAG, conge.toString());
                         res.add(conge);
                     }
+                    congeAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -116,6 +117,7 @@ public class CongeListActivity extends AppCompatActivity {
                 } else {
                     typeEtatDemandes.addAll(types);
                 }
+                congeAdapter.notifyDataSetChanged();
             }
 
             @Override

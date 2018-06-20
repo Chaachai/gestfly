@@ -41,6 +41,7 @@ public class ProjetAdapter extends RecyclerView.Adapter<ProjetAdapter.ViewHolder
 
     public ProjetAdapter(List<Projet> projets) {
         mProjets = projets;
+        notifyDataSetChanged();
     }
 
 

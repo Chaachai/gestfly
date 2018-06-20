@@ -58,6 +58,7 @@ public class ProjetListActivity extends AppCompatActivity {
         projets = findProjetsByUser(user.getId());
 
         projetAdapter = new ProjetAdapter(projets);
+        projetAdapter.notifyDataSetChanged();
 
         projetRecyclerView.setAdapter(projetAdapter);
         projetRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
@@ -133,6 +134,7 @@ public class ProjetListActivity extends AppCompatActivity {
                         Log.d(TAG, projet.getCreator().toString());
                         res.add(projet);
                     }
+                    projetAdapter.notifyDataSetChanged();
                 }
             }
 

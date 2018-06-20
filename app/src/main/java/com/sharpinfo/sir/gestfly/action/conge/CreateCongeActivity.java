@@ -145,7 +145,7 @@ public class CreateCongeActivity extends AppCompatActivity {
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if (response.body() == 1) {
                     Toast.makeText(CreateCongeActivity.this, "Conge cree avec succes", Toast.LENGTH_SHORT).show();
-                    Dispacher.forward(CreateCongeActivity.this, MenuTechnicienActivity.class);
+                    Dispacher.forward(CreateCongeActivity.this, CongeListActivity.class);
                     finish();
                 } else {
                     Toast.makeText(CreateCongeActivity.this, "Une erreur est survenu lors de la creation", Toast.LENGTH_SHORT).show();
@@ -182,8 +182,8 @@ public class CreateCongeActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String dMin = String.valueOf(editDateMax.getText());
-                String dMax = String.valueOf(editDateMin.getText());
+                String dMin = String.valueOf(editDateMin.getText());
+                String dMax = String.valueOf(editDateMax.getText());
                 executeApiCall(dMin, dMax);
 
             }

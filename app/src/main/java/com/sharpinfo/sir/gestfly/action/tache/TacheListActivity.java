@@ -133,6 +133,7 @@ public class TacheListActivity extends AppCompatActivity {
                         res.add(tache);
                         Log.d(TAG, "*********>>>>> " + tache.getNom());
                     }
+                    tacheAdapter.notifyDataSetChanged();
 
                 }
             }
