@@ -33,6 +33,8 @@ public class TypeEtatDemande implements Serializable {
     }
 
     public String getLibelle() {
+        if (libelle == null)
+            libelle = "";
         return libelle;
     }
 

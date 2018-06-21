@@ -12,7 +12,7 @@ public class ApiClient {
 
 
 //    private static final String BASE_URL = "http://10.0.3.2/Gestfly/gestfly/GestflySlimRest/";
-    private static final String BASE_URL = "http://192.168.1.11/Gestfly/gestfly/GestflySlimRest/";
+    private static final String BASE_URL = "http://192.168.43.8/Gestfly/gestfly/GestflySlimRest/";
 //    public static Retrofit retrofit = null;
 
 

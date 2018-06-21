@@ -8,7 +8,7 @@ public class ApiClientForImage {
 
 
 //    private static final String BASE_URL = "http://10.0.3.2/Gestfly/gestfly/imageupload/";
-    private static final String BASE_URL = "http://192.168.1.11/Gestfly/gestfly/imageupload/";
+    private static final String BASE_URL = "http://192.168.43.8/Gestfly/gestfly/imageupload/";
 //    public static Retrofit retrofit = null;
 
 

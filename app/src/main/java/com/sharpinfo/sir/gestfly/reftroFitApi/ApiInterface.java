@@ -16,6 +16,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -130,7 +131,6 @@ public interface ApiInterface {
     Call<Tache> findTache(@Path("id") Long id);
 
 
-
     /***FIND BY user**/
     @GET("projet/user/{id}")
     Call<List<Projet>> getProjetsByUser(@Path("id") Long id);
@@ -146,4 +146,12 @@ public interface ApiInterface {
 
     @GET("demandesalaire/user/{id}")
     Call<List<DemandeSalaire>> getDemandesSalaireByUser(@Path("id") Long id);
+
+
+    /*********DELETE***/
+    @DELETE("conge/{id}")
+    Call<Integer> deleteConge(@Path("id") Long id);
+
+    @DELETE("demandeSalaire/{id}")
+    Call<Integer> deleteDemandeSalaire(@Path("id") Long id);
 }

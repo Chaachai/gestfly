@@ -18,10 +18,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sharpinfo.sir.gestfly.R;
 import com.sharpinfo.sir.gestfly.bean.Conge;
 import com.sharpinfo.sir.gestfly.bean.DemandeSalaire;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClient;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiInterface;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +32,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SalaireAdapter extends RecyclerView.Adapter<SalaireAdapter.ViewHolder> {
     private List<DemandeSalaire> mSalaires;
@@ -94,8 +101,7 @@ public class SalaireAdapter extends RecyclerView.Adapter<SalaireAdapter.ViewHold
                                             removeFromList(viewHolder.getAdapterPosition(), viewHolder, context);
 
                                             dialog.dismiss();
-                                            Snackbar.make(salaireView, "La demande a été supprimée avec succès", Snackbar.LENGTH_LONG)
-                                                    .setAction("Action", null).show();
+
                                         }
                                     });
 
@@ -139,8 +145,7 @@ public class SalaireAdapter extends RecyclerView.Adapter<SalaireAdapter.ViewHold
 
 
                                             dialog.dismiss();
-                                            Snackbar.make(salaireView, "La demande a été supprimée avec succès", Snackbar.LENGTH_LONG)
-                                                    .setAction("Action", null).show();
+
                                         }
                                     });
 
@@ -266,7 +271,7 @@ public class SalaireAdapter extends RecyclerView.Adapter<SalaireAdapter.ViewHold
 //        }else if(salaire.getType().getType().equalsIgnoreCase("avance")){
         } else if (salaire.getType_id() == 1) {
             firstTextView.setText(R.string.avance_du_mois);
-            secondTextView.setText(salaire.getMoisAvancer()+" ");
+            secondTextView.setText(salaire.getMoisAvancer() + " ");
             thirdTextView.setText("");
         } else {
             firstTextView.setText("");
@@ -276,12 +281,32 @@ public class SalaireAdapter extends RecyclerView.Adapter<SalaireAdapter.ViewHold
 
     }
 
-    public void removeFromList(int position, ViewHolder viewHolder, Context context) {
+    public void removeFromList(final int position, final ViewHolder viewHolder, final Context context) {
         DemandeSalaire salaire = mSalaires.get(viewHolder.getAdapterPosition());
 
-        mSalaires.remove(position);
-        notifyItemRemoved(viewHolder.getAdapterPosition());
-        notifyItemRangeChanged(viewHolder.getAdapterPosition(), mSalaires.size());
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<Integer> call = apiInterface.deleteDemandeSalaire(salaire.getId());
+        call.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if (response.body() == 1) {
+                    Toast.makeText(context, "La demande a été supprimée avec succès\"", Toast.LENGTH_SHORT).show();
+                    mSalaires.remove(position);
+                    notifyItemRemoved(viewHolder.getAdapterPosition());
+                    notifyItemRangeChanged(viewHolder.getAdapterPosition(), mSalaires.size());
+                } else if (response.body() == -1) {
+                    Toast.makeText(context, "Il y'a eu un probleme lors de la suppression", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Un probleme est survenu", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+
 
     }
 

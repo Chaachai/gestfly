@@ -20,11 +20,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sharpinfo.sir.gestfly.R;
 import com.sharpinfo.sir.gestfly.action.conge.CongeListActivity;
 import com.sharpinfo.sir.gestfly.bean.Conge;
 import com.sharpinfo.sir.gestfly.bean.Tache;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiClient;
+import com.sharpinfo.sir.gestfly.reftroFitApi.ApiInterface;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,6 +35,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CongeAdapter extends RecyclerView.Adapter<CongeAdapter.ViewHolder> {
     private List<Conge> mConges;
@@ -256,12 +263,32 @@ public class CongeAdapter extends RecyclerView.Adapter<CongeAdapter.ViewHolder> 
 
     }
 
-    public void removeFromList(int position, ViewHolder viewHolder, Context context) {
+    public void removeFromList(final int position, final ViewHolder viewHolder, final Context context) {
         Conge conge = mConges.get(viewHolder.getAdapterPosition());
 
-        mConges.remove(position);
-        notifyItemRemoved(viewHolder.getAdapterPosition());
-        notifyItemRangeChanged(viewHolder.getAdapterPosition(), mConges.size());
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<Integer> call = apiInterface.deleteConge(conge.getId());
+        call.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.body()==1){
+                    Toast.makeText(context, "Demande Congé supprimé avec succes", Toast.LENGTH_SHORT).show();
+                    mConges.remove(position);
+                    notifyItemRemoved(viewHolder.getAdapterPosition());
+                    notifyItemRangeChanged(viewHolder.getAdapterPosition(), mConges.size());
+                }else if(response.body()==-1){
+                    Toast.makeText(context, "Il y'a eu un probleme lors de la suppression", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(context, "Un probleme est survenu", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+
+            }
+        });
+
 
     }
 
